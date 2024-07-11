@@ -1,17 +1,81 @@
-<script lang="ts">
-  import Counter from './lib/Counter_decrement.svelte'
+<script>
+  import { Router, Route, Link } from 'svelte-routing';
+  import CV from './CV.svelte';
+  import Home from './Home.svelte';
+  import Projects from './Projects.svelte';
+  import Project1 from './Project1.svelte';
+  import Project2 from './Project2.svelte';
+  import Project3 from './Project3.svelte';
+</script>
 
-  </script>
+<Router>
+<div class="background-container">  
+  <header>
+    <nav>
+      <ul>
+        <a href="/" class="bg-[rgba(0,0,0,0.35)] m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+          Sanzhar Shakarim
+        </a>
+        
+        <a href="/cv" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+          CV
+        </a>
 
-<main>
-  <h1>Vite + Svelte</h1>
-  <div class="card">
-    <Counter />
+        <a href="/projects" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+          Projects
+        </a>
+        
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    
+      <Route path="/" component={Home} />
+      <Route path="/cv" component={CV} />
+      <Route path="/projects" component={Projects} />
+      <Route path="/project1" component={Project1} />
+      <Route path="/project2" component={Project2} />
+      <Route path="/project3" component={Project3} />
+    
+  </main>
+
+  <footer class="rounded-lg bg-[rgba(0,0,0,0.35)] text-gray-100 p-10 mt-10 mx-8 flex justify-between items-center">
+    <div class="flex flex-col space-y-2 justify-end">
+      
+      
+      <a href="mailto:sanzhar.shakarim@wabtec.com" class="mr-4 hover:underline">sanzhar.shakarim@wabtec.com</a>
+      <a href="https://www.linkedin.com/in/sanzhar-shakarim-248497205/" class="mr-4 hover:underline">LinkedIn: Sanzhar Shakarim</a>
+      <a href="https://t.me/Sanchozver/" class="mr-4 hover:underline">Telegram</a>
+      
+    </div>
+    <div>
+      <div class="flex flex-col space-y-2 justify-end">
+        <a href="/" class="hover:underline">Home</a>
+        <a href="/projects" class="hover:underline">Projects</a>
+        <a href="/cv" class="hover:underline">CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <div> 
+    <!-- <p class="text-[rgba(0,0,0,0)]"> 0 </p> -->
+  <p>
   </div>
-  <h1>Here is the  project I learned 
-    1 is portfolio 1 is an app </h1>
-</main>
+</div>
+</Router>
 
-<style>
-
+<style lang="postcss">
+      .background-container {
+      background-image: url("src/assets/background.jpg");
+      
+      /* object-fit: fill; */
+      /* background-size: cover;
+      background-position: left center ; 
+      background-repeat: no-repeat;*/
+      height: 100%;
+      width: 100%;
+    }
+  
 </style>
