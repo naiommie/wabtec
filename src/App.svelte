@@ -6,6 +6,7 @@
   import Project1 from './Project1.svelte';
   import Project2 from './Project2.svelte';
   import Project3 from './Project3.svelte';
+  import Project4 from './Project4.svelte';
 </script>
 
 <Router>
@@ -38,6 +39,7 @@
       <Route path="/project1" component={Project1} />
       <Route path="/project2" component={Project2} />
       <Route path="/project3" component={Project3} />
+      <Route path="/project4" component={Project4} />
     
   </main>
 
@@ -60,7 +62,7 @@
   </footer>
 
   <div> 
-    <!-- <p class="text-[rgba(0,0,0,0)]"> 0 </p> -->
+    <p class="text-[rgba(0,0,0,0)]"> 0 </p>
   <p>
   </div>
 </div>
@@ -69,13 +71,15 @@
 <style lang="postcss">
       .background-container {
       background-image: url("src/assets/background.jpg");
-      
-      /* object-fit: fill; */
-      /* background-size: cover;
-      background-position: left center ; 
-      background-repeat: no-repeat;*/
-      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       width: 100%;
+      min-height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   
 </style>
