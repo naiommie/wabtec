@@ -7,6 +7,7 @@
   import Project2 from './Project2.svelte';
   import Project3 from './Project3.svelte';
   import Project4 from './Project4.svelte';
+  import Project5 from './Project5.svelte';
 </script>
 
 <Router>
@@ -40,6 +41,7 @@
       <Route path="/project2" component={Project2} />
       <Route path="/project3" component={Project3} />
       <Route path="/project4" component={Project4} />
+      <Route path="/project5" component={Project5} />
     
   </main>
 
