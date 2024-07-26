@@ -187,7 +187,7 @@
                     {:else if row.column1 === 'con-audio-alarm'}
                         {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
                     {:else}
-                        {row.column1}
+                        {row.column1} <span class="text-yellow-400">(No test cases)</span>
                     {/if}
                   </a>
               </td>
