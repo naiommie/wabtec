@@ -1,5 +1,5 @@
 <script>
-  import { Router, Route, Link } from 'svelte-routing';
+  import { Router, Route } from 'svelte-routing';
   import CV from './CV.svelte';
   import Home from './Home.svelte';
   import Projects from './Projects.svelte';
@@ -8,6 +8,8 @@
   import Project3 from './Project3.svelte';
   import Project4 from './Project4.svelte';
   import Project5 from './Project5.svelte';
+  import Project6 from './Project6.svelte';
+  import Project6a from './Project6a.svelte';
 </script>
 
 <Router>
@@ -42,6 +44,8 @@
       <Route path="/project3" component={Project3} />
       <Route path="/project4" component={Project4} />
       <Route path="/project5" component={Project5} />
+      <Route path="/project6" component={Project6} />
+      <Route path="/project6a" component={Project6a} />
     
   </main>
 
@@ -72,7 +76,8 @@
 
 <style lang="postcss">
       .background-container {
-      background-image: url("src/assets/background.jpg");
+         background-color: rgb(48, 60, 78);
+      /*background-image: url("src/assets/background.jpg"); */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

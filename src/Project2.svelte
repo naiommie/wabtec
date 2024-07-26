@@ -41,7 +41,7 @@
     <a href="/projects" class="underline hover:bg-[rgba(0,0,0,0.2)]">Back to project list...</a>
   </div>
 
-  <h1 class="text-2xl font-bold mt-4">SES RAT vs QVScribe requirement tools comparison</h1>
+  <h1 class="text-2xl font-bold mt-2">SES RAT vs QVScribe requirement tools comparison</h1>
   <div class="overflow-x-auto">
     <table class="w-full mt-4 text-xs border-2 border-gray-100">
       <thead>
@@ -71,14 +71,15 @@
     </table>
   </div>
 
-  <h2 class="text-xl font-bold mt-4">Results</h2>
+  <h2 class="text-xl font-bold mt-4">Correctness</h2>
+  <p class="text-l mt-2"> This table lists 217 requirements for which QVscribe gave a score of 100 and SES gave a score of 0. For context, an SES output is also provided. </p>
+  <p class="text-l"> It can be seen that all these requirements should be low scored, however, QVscribe doesn't low the score for the passive voice and terms like "all" </p>
   <div class="overflow-x-auto">
     <table class="w-full mt-4 text-xs border-2 border-gray-100">
       <thead>
         <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
           <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">#</th>
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">QVscribe summary</th>
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">SES summary</th>
+          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">Requirement</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-x divide-gray-100">
@@ -86,7 +87,6 @@
           <tr class="border-b-2 border-gray-100">
             <td class="px-2 py-1 text-center whitespace-pre-line text-xs border-r-2 border-gray-100">{index + 1}</td>
             <td class="px-2 py-1 whitespace-pre-line text-xs border-b-2 border-r-2 border-gray-100">{row.column1}</td>
-            <td class="px-2 py-1 whitespace-pre-line text-xs border-r-2 border-b-2 border-gray-100">{row.column2}</td>
           </tr>
         {/each}
       </tbody>

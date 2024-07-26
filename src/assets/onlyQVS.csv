@@ -1,0 +1,290 @@
+﻿"An operator db match/exceed condition is met when the Operator moves the MC DB Handle to match or exceed the last VALID LCCM DB command if LCCM and Locomotive operating mode was Dynamic Braking prior to ""vcsLccmLivelinessLost"" is set to ""TRUE""."
+"The control system shall set ""emTlDBStartCommandValid"" to TRUE when ""emTlDBStartCommand"" was TRUE prior to ""vcsLccmLivelinessLost"" sets to TRUE and Idle Down Hold DB is In Progress."
+"Control System shall transition from Ready P to the Brake Setup Configure state when requested through the brake handle and if all the following conditions are TRUE:
+• No Dynamic Brake Restriction
+• No All Powered Modes Restriction
+• EC Switch in RUN
+• Forward or Reverse Direction Call
+• PC Trainline Voltage GREATER THAN 35V"
+"Control System shall transition from Brake to Brake Cleanup if any of the following conditions are satisfied:
+• 	Direction call is NEUTRAL or changed 
+• 	Brake handle is moved to OFF
+• 	EC Switch NOT in RUN
+• 	Barrier Bar OPEN
+• 	Local Control Circuit Breaker OFF 
+• 	PC Trainline Voltage  LESS THAN 30V
+• 	Aux/Alt sys running is FALSE
+• 	Dynamic Brake Restriction
+• 	All Powered Modes Restriction"
+"The control system shall set OPMC_SV = OPMC_MOTOR when all the below conditions are met 
+
+
+a)VCS State is in MOTOR 
+b) When Plug Mode is in NO_PLUG OR !PLUG_MOTOR 
+c) When aux power source healthy isTRUE 
+"
+"The control system shall set OPMC_SV = OPMC_PLUG_MOTOR when all the below conditions are met 
+a)VCS State is in MOTOR 
+b) When plug mode is in PLUG_MOTOR 
+c) When aux power source healthy isTRUE 
+"
+"Control system shall set the variable grid_ok_to_connect[n] = TRUE
+When all of below conditions are satisfied
+
+a) Isolate Grid Leg [n]  =  FALSE (grid restrictions and DB contactor restrictions are included in ""Isolate Grid Leg[n]"" definition)
+b)Dynamic Brake Chopper [n] Restricted =  FALSE , [n=2 to 5 for ROYHILL]"
+"Control system shall set the restriction Dynamic Brake Chopper [n] Restricted  = TRUE 
+When any of following chopper inhibiting TMC phenoms based faults are logged (#Section 15.8 of RT spec)
+1.Chopper [n] Gate Drive Fault
+2.Chopper [n] Overcurrent Fault  
+3.Chopper [n] IGBT Saturation Fault
+4.Chopper [n] IGBT Power Supply Fault"
+"T36: The control system shall set PAPC_SV[n]= PAPC AXLE[n] AUX_LOAD +BATT_CHRG_BRAKE 
+when all of the below conditions are satisfied
+Aux axle:
+a) OPMC_SV=BRAKE OR Any of the brake modes 
+b) [inv_power_fb_hp >= abs (Aux Axle Min Batt Bank Charge Mode Entry Thd (350hp)  + Hysteresis (10hp))]
+c) aux_&_batt_chrg[n] = TRUE 
+d) high_trq_on_axle[n]= FALSE
+e) Aux Blower Inverter Restriction  =  FALSE 
+f) Axle[n] Available for Braking = TRUE
+g) Battery Bank[n] Charge Enabled =TRUE
+h) run_inv_actual[n] =TRUE 
+
+In this state command the following outputs
+1) battery bank conatctor[n] command = CHARGE
+2) run_inv_pa_rqst[n] = TRUE 
+3) trq_cmd[n] = P&T_torque_cmd[n]
+4) SYS_DB_CMD[n] = DB_NO_CHOPPER, for Non Chopper Grids
+5) RESET , batt_dual_exit[n] = FALSE
+
+On entry RESET timer 
+6) max_dual_wait_timer[n], (5min)
+7) dual_exit_trq_timer[n](4min 30sec)
+8) latch torque timer[n](1 sec)  "
+"T25 Transition:
+480V Aux Bus Mode Control shall start  Ext LEM health Check Timer Starts (5 Sec, Configurable)  whenever ALL of the following conditions are satisfied (Refer T25Transition)
+1. FPM CFM feedback are within the tolerance from EQV 
+2. VSPD Aux is Up and Running  AND No ABV, MBV Restriction "
+"T040 Transition:
+480V Aux Bus Mode Control shall Send  Send Run FPM Inverter Cmd, V/Hz, Freq command to TMC whenever 480V Aux Inv Ground Isolation Request[n] is FORCE ON from Prop Bus Ground (Refer T040 Transition)
+"
+480V Bus control shall acquire Maintenance Charger Phase A Input Voltage (rms) from TMC
+480V Bus control shall output FPM Phase C Volt Too Low While Phase C Up On flag
+Step Load Manager control shall acquire CDCB Request from Compressed Air subsystem
+480V Bus control shall output CMiA (FPM Current Ia Not Zero At Start-up) flag
+"480V Aux Bus Step Load Manager shall Command AC B Run Permission to TRUE AND Command BTMU Hold to TRUE whenever ALL of the following conditions are satisfied(Refer to T3 Transition)
+1. CDCB Request to TRUE
+2. AC B Run Permission to FALSE 
+3. BTMU has not been held off from starting since the last time  AC B was granted permission to start"
+480V Bus control shall output FPM Low Frequency On Vco Link Filter V Channel flag
+480V Bus control shall output Phase A FPM volt too neg when BDN on flag
+480V Bus control shall output FPM (Load Voltage Too High) flag
+480V Bus control shall output FPM (Current Ib Too Positive) flag
+480V Bus control shall output FPM (Vb2 Voltage Too Negative) flag
+480V Bus control shall output FPMC- (FPM Phase C down Feedback Not On) flag
+480V Bus control shall output FPM (Phase A2 And B2 Currents Do Not Match) flag
+480V Bus control shall output FPMA+ (FPM Phase A Positive Module Failed) flag
+"480V Bus control shall output Current Scale a5 Out Of Range,70%,120% flag"
+480V Bus control shall output FPM (Va Voltage Too Positive) flag
+480V Aux Bus Mode Control shall acquire Run_Inv_actual from TMC
+480V Bus control shall output FPM Phase B Fault Current When Phase B Up On flag
+Control system shall publish the VI Test Completed status (FPM VI TEST COMPLETED)
+480V Bus control shall output CMiB2 (FPM Phase B2 Current Sensor Failed) flag
+480V Bus control shall output FPM (Current Ib Too Negative) flag
+480V Bus control shall output FPM Low Frequency On Vco In Filter V Channel flag
+480V Bus control shall output FPM Ground Cal Scale Out Of Range 90% to 110% flag
+480V Bus control shall output FPMC- (FPM Phase C Negative Module Failed) flag
+480V Bus control shall output FPM (Phase C Down Command Not On) flag
+480V Bus control shall output CMiA (FPM Phase A Current Sensor Open) flag
+"480V Aux Bus Mode Control shall goes to SHUTDOWN state whenever Run inv Actual, V/Hz and Freq command and feedback confirmed  (Refer T15Transition)"
+"Step Load Manager control shall prioritize the loads in the following order AC#1, AC#2, AC#3, BTMU"
+480V Bus control shall acquire Maintenance Charger Phase B Input Voltage (rms) from TMC
+480V Aux Bus Mode Control shall generate MCC Command 
+480V Bus control shall output FPM Phase A Volt Too Low While Phase A Up On flag
+"480V Bus control shall output FPM (Current_ScaleC Out Of Range, 70%, 120%) flag"
+480V Aux Bus Mode Control shall acquire MCC Position feedback from NIO
+480V Bus control shall output FPM Phase C Current Out Too High flag
+The control system shall publish FPM VI test PASSED in MC Charging and FPM VI Test Completed in MC Charging (Refer T204 Transition)
+480V Bus control shall output MCC Stuck Close flag
+480V Bus control shall output MCIR Stuck Close flag
+480V Bus control shall output FPM Phase B Volt Low With All Phase Modules Off flag
+480V Bus control shall output FPM (Phase A Up Command Not Off) flag
+480V Bus control shall output FPM Link Voltage Too Negative flag
+V2 Transition: The control system shall Evaluate Link Volts of axle 6 is 20volts (~zero volts) (Refer V2 Transition)
+480V Bus control shall output FPMB- (FPM Phase B Neg Phase Module Did Not Turn On) flag
+"Control shall energize MCC command when ""On"" is selected on the Maintenance Charger Contactor MCC Self Test Screen "
+480V Bus control shall output FPM Phase B Volt Too Low While Phase B Up On flag
+480V Bus control shall output FPM Low Frequency On Vco Link Filter V Channel flag
+480V Bus control shall output FPM (Phase C Overcurrent Signal Too Long) flag
+480V Bus control shall acquire Maintenance Charger Phase C Input Voltage (rms) from TMC
+480V Bus control shall output FPM (Low Frequency On Vco Vtest Channel) flag
+480V Bus control shall output VAM (FPM Phase B Voltage Too High) flag
+480V Bus control shall output FPM (Cam Isr Not Running) flag
+480V Bus control shall output a5 phase current too high flag
+480V Bus control shall acquire Compressor B Load Request from Compressed Air subsystem
+480V Bus control shall output CMiA (FPM Phase A Current Sensor Failed) flag
+480V Aux Bus Mode Control shall acquire MC Voltage Reference from MC Control
+"The control system shall execute FPM Inverter VI test upon receiving VI need flags from traction inverter controller in a sequence starting with zero volt vi test, followed with mid volt vi test and high volt vi test"
+480V Bus control shall output Current ia4 not zero at start-up flag
+480V Bus control shall output FPMB+ (FPM Over-current On Phase B) flag
+480V Bus control shall output Phase C FPM volt too pos when CUP on flag
+480V Bus control shall output Phase B FPM volt too neg when CDN on flag
+480V Aux Bus Mode Control shall acquire Maintenance Charger Isolation Relay Validity from NIO
+480V Bus control shall output FPM Link Filter Voltage Too Low flag
+"480V Aux Bus Step Load Manager shall Command BTMU Hold to FALSE whenever 5-10 sec (configuarble) persistance time completed(Refer T8 Transition) 
+Note: This state has persisted for at least 5s
+"
+480V Bus control shall output FPMB- (FPM Phase B Pos & Neg Phase Modules On (Neg Turn On)) flag
+480V Bus control shall output FPM Phase B Current In Too High flag
+480V Bus control shall output FPM Phase A Fault Current When Phase A Up On flag
+480V Aux Bus Mode Control shall acquire MCIR Position feedback request from NIO
+480V Bus control shall output FPMA+ (FPM Phase A Pos Phase Module Power Supply) flag
+480V Bus control shall output Phase A FPM volt too pos when BUP on flag
+480V Bus control shall output Phase A FPM volt too pos when ADN on flag
+480V Bus control shall output FPMB+ (FPM Over-current On Phase B) flag
+480V Aux Bus Mode Control shall acquire CDC_A Position feedback request from NIO
+480V Bus control shall output FPM (Logic Ground Not OK) flag
+480V Aux Bus Mode Control shall acquire MCGMM feedback from NIO
+480V Bus CFM Request Generation shall acquireFPM  Phase C Output Current (rms) from TMC
+480V Bus control shall output FPM (Zero sequence current high) flag
+480V Bus control shall output FPMA+ (FPM Phase A Pos Phase Module Did Not Turn Off) flag
+480V Bus control shall acquire MCC Position feedback from NIO
+480V Bus control shall output FPM (Phase A And C Currents Do Not Match) flag
+480V Bus CFM Request Generation shall acquire Voltage feedback
+480V Aux Bus Mode Control shall acquire External Charge Mode Request from MC Control
+480V Aux Bus Mode Control shall acquire GMM feedback from NIO
+480V Bus control shall output FPM Phase C Volt Too High While Phase A Down On flag
+480V Bus control shall output CMiB (FPM Current Ib Not Zero At Start-up) flag
+480V Bus control shall output FPM Phase A Volt Too High While Phase A Down On flag
+480V Bus control shall output FPM Vb Voltage Too Negative flag
+480V Bus control shall output Phase B FPM volt too pos when BUP on flag
+480V Bus control shall output FPM Phase B Current Out Not Zero flag
+480V Bus control shall output FPM (Phase B Overcurrent Signal Too Long) flag
+480V Bus control shall output FPM (Current Ib Too Positive) flag
+Control system shall acquire FPM_High_VOLT_TEST_REQD (High Volt VI Test) from TMC
+"Control shall de-energize BTMC command when ""Off"" is selected on the Battery Thermal Management  Unit Contactor BTMC Self Test Screen  "
+Step Load Manager control shall generate AC C RUN Permission to Compressed Air control
+480V Bus control shall output FPM Vb Voltage Too Negative flag
+480V Bus control shall output FPM VI Test Incomplete flag
+480V Bus control shall output FPM o/p voltage outside limits flag
+480V Bus control shall output CMiB (FPM Phase B Current Sensor Open) flag
+480V Bus control shall output FPM (Phase A Overcurrent Signal Too Long) flag
+Step Load Manager control shall generate BTMU Staging Hold to Energy Storage control 
+480V Bus control shall output Phase A FPM volt too pos when CUP on flag
+480V Bus control shall output FPMA- (FPM Phase A Neg Module Failed) flag
+480V Bus control shall output FPM Phase B Volt Too Low While Phase B Up On flag
+480V Aux Bus Mode Control shall generate 480V Aux Mode feedback 
+480V Bus control shall acquire AC load Phase C Current (rms) from TMC
+480V Bus control shall output FPMC+ or FPMC- (FPM Phase C Phase Module Did Not Turn Off) flag
+480V Bus control shall output HPS +24 Volt Not In Tolerance flag
+480V Bus control shall output FPM (Low Freq On Vco Vc2 Channel) flag
+480V Bus CFM Request Generation shall generate Underdeck Ambient Temperature for FCB
+Step Load Manager control shall acquire BTMU Run Request from Energy Storage
+480V Bus control shall output FPM Phase A Current Out Too High flag
+480V Bus control shall output FPM Phase A Fault Current When Phase A Up On flag
+480V Bus CFM Request Generation shall acquire Transformer 480V ACFM Supplied 
+480V Bus control shall output FPM Phase C Volt Too Low While Phase B Up On flag
+480V Aux Bus Mode Control shall generate BTMU RUN Permission to Energy Storage control 
+480V Bus control shall acquire Transformer Sec Phase C Voltage (rms) from TMC
+480V Bus control shall output CMiC (FPM Current Ic Not Zero At Start-Up) flag
+480V Bus control shall output Isolation Transformer's CFM Feedback Mismatch flag
+480V Bus control shall output Current ia5 not zero at start-up flag
+"480V Bus control shall output Current Scale a4 Out Of Range,70%,120% flag"
+480V Bus control shall output FPM (Low Freq On Vco Va2 Channel) flag
+480V Bus control shall output FPM Phase B Current In Too High flag
+480V Bus control shall acquire Maintenance Charger Phase B Input Current (rms) from TMC
+480V Bus control shall output FPMB+ (FPM Phase B Positive Module Failed) flag
+480V Bus control shall output Phase B FPM volt too pos when BDN on flag
+480V Aux Bus Mode Control shall acquire hep V per hz cmnd feedback from TMC
+480V Bus control shall output FPM Phase B Volt Too High While Phase B Down On flag
+480V Bus control shall output Phase C FPM volt too pos when ADN on flag
+480V Bus control shall acquire BTMC Driver quality
+480V Bus control shall output FPM (Inverter CPU Was Reset) flag
+480V Bus CFM Request Generation shall acquire D9_TRNSFRMR_SEC_VB2_VRMS from TMC 
+480V Bus control shall output Phase C FPM volt too neg when ADN on flag
+480V Bus control shall output FPM Card Pwr Mon Reset: 2.5v Low flag
+480V Aux Bus Mode Control shall generate Inv Funct Opt for FPM 
+480V Bus control shall output Phase C FPM volt too neg when AUP on flag
+480V Bus control shall output Phase B FPM volt too neg when CUP on flag
+480V Bus control shall output Current Ia4 Too Negative flag
+480V Bus control shall output FPM (Phase B Down Command Not Off) flag
+480V Bus control shall output CMiC2 (FPM Phase C2 Current Sensor Failed) flag
+480V Bus control shall output Phase A FPM volt too neg when CUP on flag
+480V Bus control shall output FPM Phase C Current In Too High flag
+480V Bus control shall output FPM Phase B Fault Current When Phase C Down On flag
+480V Bus control shall output FPM Phase A Current In Too High flag
+480V Bus control shall output FPM (Low Freq On Vco Ia2 Channel) flag
+"480V Bus control shall output FPM (Current_ScaleB Out Of Range 70%, 120%) flag"
+480V Bus control shall output CMiB2 (FPM Phase B2 Current Too High) flag
+480V Bus control shall output FPMC+ (FPM Phase C Pos Phase Module Did Not Turn Off) flag
+480V Aux Bus Mode Control shall Send Command BTMC to Open whenever loads turned Off confirmed(BTMU Run Perm and AC_X Run Perm) OR Set Load Run Permissions Off Max time Out (Refer T5Transition)
+480V Bus control shall output FPM Phase A Fault Current When Phase C Up On flag
+480V Bus control shall acquire MCC Contactor Cmd 
+Control system shall publish the VI Test Passed status (FPM VI TEST PASSED)
+480V Bus control shall output CMiB2 (FPM Phase B2 Current Sensor Failed) flag
+480V Bus control shall output FPM (Low Frequency On Vco Vtest Channel) flag
+480V Bus control shall output Phase B FPM volt too pos when BDN on flag
+480V Bus control shall output Phase A FPM volt too neg when BUP on flag
+480V Bus control shall output FPMC+ (FPM Phase C Pos Phase Module Did Not Turn On) flag
+480V Bus control shall output FPMB+ or FPMB- (FPM Phase B Phase Module Did Not Turn Off) flag
+480V Bus control shall output VAM (FPM Phase B Voltage Too High) flag
+Step Load Manager control shall acquire Compressor B Load Request from Compressed Air subsystem
+480V Aux Bus Step Load Manager shall send ACx Run Permission to FALSE when Compressor X Load Request is FALSE AND BTMU Run Permission to FALSE when BTMU Run Request is FALSE
+480V Bus control shall output FPM Card Pwr Mon Reset: 1.25v Low flag
+480V Bus control shall output FPM Phase A Fault Current When Phase C Up On flag
+480V Bus control shall output FPMB+ (FPM Phase B Pos Phase Module Power Supply) flag
+480V Bus control shall acquire MCC Command
+480V Bus control shall acquire FPM Phase C OutputVoltage (rms) from TMC
+480V Aux Bus Mode Control shall generate FPM System Tic
+480V Bus control shall output FPMB+ (FPM Phase B Up Feedback Not On) flag
+Step Load Manager control shall acquire CDCA Request from Compressed Air subsystem
+480V Bus CFM Request Generation shall acquire D9_TRNSFRMR_SEC_VA2_VRMS from TMC
+480V Bus control shall output FPM (Peak Sample.isr Not Running) flag
+480V Bus control shall output FPM (High Frequency On Vco IB Channel) flag
+480V Bus control shall output FPM Phase A Volt Too Low While Phase C Up On flag
+480V Bus control shall output Low Freq on vco or delta sigma Ia5 Channel flag
+480V Aux Bus Mode Control shall generate AC C RUN Permission to Compressed Air control
+480V Bus control shall output FPM Phase C Current Out Too Low flag
+480V Bus control shall output FPMA+ (Phase Module Saturation On Phase A) flag
+480V Bus control shall output CMiA (FPM Phase A Current Sensor Open) flag
+480V Bus control shall output FPM Link Filter Voltage Too Low flag
+480V Aux Bus Mode Control shall acquire BTMS Run Request from Energy Storage
+480V Bus control shall acquire BTMC position feedback quality
+480V Bus control shall output FPM (High Freq On Vco Vc2 Channel) flag
+480V Bus control shall output FPMB- (FPM Phase B Pos & Neg Phase Modules On (Neg Turn On)) flag
+480V Bus control shall output FPM (Vc2 Voltage Too Positive) flag
+"480V Bus control shall output Current Scale a4 Out Of Range,70%,120% flag"
+480V Bus control shall output FPM (Phase C Overcurrent Signal Too Long) flag
+480V Bus control shall output Overcurrent on Phase b4 flag
+480V Bus control shall output FPMA+ (FPM Phase A Pos & Neg Phase Modules On (Pos Turn On)) flag
+480V Bus control shall output Current Ia4 Too Positive flag
+"480V Bus control shall output Current Scale b4 Out Of Range,70%,120% flag"
+The system shall provide the value of Maintenance Charge Voltage Reference (Vref_MC) to 480V Inverter.
+Control System shall acquire the value of Link Voltage for Axle 6 from 480V FPM Inverter.
+"CLEANUP REQUIREMENTS: 
+
+Initialization: The control system shall initiate the voltage reference clean up when any of the below condition is TRUE.
+
+1. Battery Bank Restriction[n] tranisitions to TRUE 
+2. Battery Bank Charge Restriction[n] transition to TRUE.
+3. {Battery Bank Charge Restriction[n] AND Battery Bank Restricted[n]} transitions to FALSE for a given battery bank.
+4. PAPC_SV[n] transitions to BATT_BANK_OPEN_VREF_REDUCE 
+(Equivalent state for this MCA APP state in design spec 84A300750RT is, PAPC_MC_TEMP_VREF_REDUCE_TO_DISCONNECT_ALL_BATT_BANK[n]) State"
+Control system shall acquire Voltage Reference (Vref_ES3) from Voltage Reference Generation from INC/DEC Function.
+Control system shall acquire the value of Total VSPD Aux Load.
+The control system shall run the voltage reference function and determine vref_ES3 every 20 msec.
+Control system shall acquire the status of Battery Bank Charge Restriction per battery bank.
+Control system shall publish run inverter[n] request
+Control system shall publish different OPMC_SV (Enum)
+480V Bus control shall output FPM Phase A Fault Current When Phase A Down On flag
+480V Bus control shall drive FPM Inverter Restriction
+480V Bus control shall output Phase C FPM volt too neg when CDN on flag
+480V Bus control shall output FPM (High Frequency On Vco Va Channel) flag
+480V Bus control shall output FPMC- (FPM Phase C Neg Phase Module Did Not Turn On) flag
+480V Bus control shall output FPM (Va Voltage Too Positive) flag
+480V Bus control shall drive Maintenance Charger Contactor Restricted
+480V Bus control shall output FPM (Logic Ground Not OK) flag
+480V Bus control shall output FPM (High Freq On Vco Vc2 Channel) flag
+480V Bus control shall output FPM (Chopper2 interrupt not running) flag
+480V Bus control shall output FPM (Low Freq On Vco Vb2 Channel) flag

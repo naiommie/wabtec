@@ -14,6 +14,12 @@
         </div>
 
         <div class="mt-8">
+            <a href="/project6" class="block text-xl font-bold hover:underline">Coverage Report</a>
+            <p class="text-lg my-2">Coverage Report on test harnesses result</p>
+            <a href="/project6" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
+        </div>
+
+        <div class="mt-8">
             <a href="/project2" class="block text-xl font-bold hover:underline">SES RAT vs QVScribe requirement tools comparison</a>
             <p class="text-lg my-2">A comparative analysis of two requirement management tools: SES RAT and QVScribe.</p>
             <a href="/project2" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
