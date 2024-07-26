@@ -68,14 +68,14 @@
       <div class="flex flex-col">
         <h1 class="text-2xl font-bold mt-2">Coverage report</h1>
         <h1 class="text-xl mt-2">
-            <span class="text-xl font-bold"> Test date:</span>  
-            <span class="text-xl"> 2024-01-27 18:03:53</span>
+            <span class="text-xl font-bold"> Created date:</span>  
+            <span class="text-xl"> 2024-July-26 10:38:53</span>
         </h1>
         <h2 class="text-xl font-bold mt-2">
           <span class="text-xl"> Rating: </span> 
-          <span class="px-2 py-1 text-sm" style="background-color: red; color: white;">Low: &lt; 75%</span>
+          <span class="px-2 py-1 text-sm" style="background-color: red; color: black;">Low: &lt; 75%</span>
           <span class="px-2 py-1 text-sm" style="background-color: yellow; color: black;">Medium: ≥ 75%</span>
-          <span class="px-2 py-1 text-sm" style="background-color: green; color: white;">High: ≥ 90%</span>
+          <span class="px-2 py-1 text-sm" style="background-color: green; color: black;">High: ≥ 90%</span>
         </h2>
       </div>
       <div class="flex flex-col items-end">
@@ -151,8 +151,44 @@
           
             <tr class="border-b-2 border-gray-100">
               <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">
-                <a href="/project6a?container={row.column1}" class="underline hover:bg-[rgba(0,0,0,0.2)]">
-                    {row.column1}
+                <a href="/project6a?container={row.column1}" class="hover:bg-[rgba(0,0,0,0.2)] hover:underline">
+                    {#if row.column1 === 'con-audio-alarms'}
+                        {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
+                    {:else if row.column1 === 'con-aux-speed-indicator'}
+                        {row.column1} <span class="text-gray-400">(2024-May-12 15:25:02)</span>
+                    {:else if row.column1 === 'con-rail-adhesion'}
+                        {row.column1} <span class="text-gray-400">(2024-May-14 13:58:39)</span>
+                    {:else if row.column1 === 'con-lights-control'}
+                        {row.column1} <span class="text-gray-400">(2024-May-14 13:06:39)</span>
+                    {:else if row.column1 === 'con-air-brake-management'}
+                        {row.column1} <span class="text-gray-400">(2024-May-17 14:37:44)</span>
+                    {:else if row.column1 === 'con-aux-inverter-control'}
+                        {row.column1} <span class="text-gray-400">(2024-May-18 12:35:34)</span>
+                    {:else if row.column1 === 'con-event-recorder'}
+                        {row.column1} <span class="text-gray-400">(2024-May-21 10:36:48)</span>
+                    {:else if row.column1 === 'con-display'}
+                        {row.column1} <span class="text-gray-400">(2024-May-22 13:42:20)</span>
+                    {:else if row.column1 === 'con-high-voltage-aux-bus'}
+                        {row.column1} <span class="text-gray-400">(2024-May-31 17:44:09)</span>
+                    {:else if row.column1 === 'con-axle-powerup'}
+                        {row.column1} <span class="text-gray-400">(2024-May-31 19:28:43)</span>
+                    {:else if row.column1 === 'con-aux-equipment'}
+                        {row.column1} <span class="text-gray-400">(2024-July-09 02:33:49)</span>
+                    {:else if row.column1 === 'con-energy-storage'}
+                        {row.column1} <span class="text-gray-400">(2024-Jun-19 13:30:46)</span>
+                    {:else if row.column1 === 'con-locomotive-speed'}
+                        {row.column1} <span class="text-gray-400">(2024-Jun-09 17:10:54)</span>
+                    {:else if row.column1 === 'con-locomotive-control'}
+                        {row.column1} <span class="text-gray-400">(2024-Jun-13 15:01:10)</span>
+                    {:else if row.column1 === 'con-high-voltage'}
+                        {row.column1} <span class="text-gray-400">(2024-Jun-16 20:34:59)</span>
+                    {:else if row.column1 === 'con-torque'}
+                        {row.column1} <span class="text-gray-400">(2024-Jun-29 01:49:55)</span>
+                    {:else if row.column1 === 'con-audio-alarm'}
+                        {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
+                    {:else}
+                        {row.column1}
+                    {/if}
                   </a>
               </td>
               <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100">
