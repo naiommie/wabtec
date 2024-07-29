@@ -78,7 +78,8 @@
 
 <style lang="postcss">
       .background-container {
-      background-image: url("src/assets/background.jpg"); 
+        background-color: rgba(22, 25, 39, 0.753);
+      /* background-image: url("src/assets/background.jpg");  */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
