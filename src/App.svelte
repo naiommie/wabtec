@@ -76,8 +76,7 @@
 
 <style lang="postcss">
       .background-container {
-         background-color: rgb(48, 60, 78);
-      /*background-image: url("src/assets/background.jpg"); */
+      background-image: url("src/assets/background.jpg"); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
