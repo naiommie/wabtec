@@ -32,15 +32,15 @@
         </div>
 
         <div class="mt-8">
-            <a href="/project4" class="block text-xl font-bold hover:underline">Old Version of Project 1</a>
-            <p class="text-lg my-2">Old version of Project 1</p>
+            <a href="/project4" class="block text-xl font-bold hover:underline">Auto selectable version of Project 1</a>
+            <p class="text-lg my-2">Auto selectable version of Project 1, but not works if the selection is made again</p>
             <a href="/project4" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
         </div>
 
         <div class="mt-8">
-            <a href="/project5" class="block text-xl font-bold hover:underline">Test</a>
-            <p class="text-lg my-2">Test</p>
-            <a href="/project5" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
+            <a href="/project7" class="block text-xl font-bold hover:underline">Testing some features</a>
+            <p class="text-lg my-2">This is a test project to test some functions of each project</p>
+            <a href="/project7" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
         </div>
 
     </div>
