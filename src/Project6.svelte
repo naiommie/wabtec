@@ -151,7 +151,7 @@
           
             <tr class="border-b-2 border-gray-100">
               <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">
-                <a href="/project6a?container={row.column1}" class="hover:bg-[rgba(0,0,0,0.2)] hover:underline">
+                <a href="/project6a?container={row.column1}" class="underline hover:bg-[rgba(44,188,255,0.4)]">
                     {#if row.column1 === 'con-audio-alarms'}
                         {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
                     {:else if row.column1 === 'con-aux-speed-indicator'}
