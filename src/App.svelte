@@ -10,6 +10,9 @@
   import Project5 from './Project5.svelte';
   import Project6 from './Project6.svelte';
   import Project6a from './Project6a.svelte';
+  import Project6a_master from './Project6a_coverage_master.svelte';
+  import Project6a_develop from './Project6a_coverage_develop.svelte';
+  import Project6a_rhi from './Project6a_coverage_latest.svelte';
   import Project7 from './Project7.svelte';
 </script>
 
@@ -47,6 +50,9 @@
       <Route path="/project5" component={Project5} />
       <Route path="/project6" component={Project6} />
       <Route path="/project6a" component={Project6a} />
+      <Route path="/project6a_coverage_master" component={Project6a_master} />
+      <Route path="/project6a_coverage_develop" component={Project6a_develop} />
+      <Route path="/project6a_coverage_latest" component={Project6a_rhi} />
       <Route path="/project7" component={Project7} />
     
   </main>

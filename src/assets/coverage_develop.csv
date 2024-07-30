@@ -1,0 +1,69 @@
+power source,eng_start_stop_arb_mdl,63%,76%,100%
+power source,load_shed_mdl,73%,80%,100%
+power source,function_disables_subapp_mdl,49%,49%,96%
+power source,auto_stop_sequencer_subapp_mdl,88%,88%,100%
+power source,auto_start_sequencer_subapp_mdl,65%,65%,100%
+power source,auto_stop_allow_mdl,100%,91%,100%
+power source,auto_start_request_subapp_mdl,32%,24%,44%
+power source,aess_infrastructure_mdl,43%,47%,74%
+power source,fuel_pump_relay_hardware_mgr_mdl,74%,76%,100%
+power source,prime_prelube_mgr_mdl,63%,63%,73%
+consist gateway,consist_control_trail_mdl,41%,51%,98%
+consist gateway,cmg_server_mdl,26%,33%,55%
+locomotive control,loco_mode_translator_mdl,95%,61%,100%
+locomotive control,slow_speed_mdl,31%,50%,97%
+audio alarms,serial_lsi_aap_com_mdl,35%,72%,100%
+rail adhesion,sanding_control_mdl,64%,74%,95%
+high voltage,dyn_brk_grid_contactor_mgr_mdl,19%,22%,50%
+high voltage,dyn_brk_grid_blower_mgr_mdl,55%,51%,96%
+high voltage,dyn_brk_grid_resistor_mgr_mdl,35%,40%,92%
+high voltage,dyn_brk_grid_mgr_mdl,48%,42%,96%
+high voltage,prop_bus_power_fdbk_calc_mdl,75%,100%,100%
+fuel tank monitor,lsi_ftm_comms_mdl,58%,62%,100%
+fuel tank monitor,fuel_tank_monitor_mdl,33%,48%,89%
+fuel tank monitor,acp_ftm_comms_mdl,81%,72%,100%
+power conversion,trac_alt_volt_ref_mdl,32%,41%,0%
+air brake management,penalty_brake_mdl,100%,99%,100%
+air brake management,overspeed_mdl,58%,63%,100%
+air brake management,end_of_train_mdl,41%,50%,95%
+air brake management,reset_alerter_mdl,50%,84%,98%
+air brake management,enable_alerter_mdl,69%,57%,77%
+air brake management,end_of_train_comm_mdl,43%,64%,77%
+air brake management,control_alerter_mdl,81%,75%,100%
+air brake management,alerter_mdl,65%,73%,99%
+air brake management,air_brake_comms_mdl,55%,84%,99%
+display,language_mdl,96%,93%,100%
+display,event_translator_mdl,76%,79%,100%
+display,dynamic_brake_warn_mdl,70%,55%,98%
+display,app_distance_counter_mdl,94%,76%,99%
+display,display_state_mdl,82%,77%,100%
+display,incident_reset_mdl,86%,100%,100%
+display,display_diagnostics_mdl,62%,68%,100%
+display,access_control_mdl,73%,79%,100%
+lights control,lights_mdl,25%,40%,100%
+db modem,db_modem_comms_mdl,100%,94%,100%
+db modem,db_modem_mdl,47%,52%,88%
+locomotive speed,locked_axle_relay_mgr_mdl,100%,84%,100%
+locomotive speed,wheel_diameter_deration_mdl,50%,50%,89%
+locomotive speed,slipped_pinion_mgr_mdl,49%,27%,48%
+locomotive speed,subapp_locked_axle_wheel_slide_mdl,59%,53%,98%
+locomotive speed,enhanced_locked_axle_mdl,55%,53%,98%
+locomotive speed,axle_diagnostics_mdl,38%,46%,96%
+switchgear control,power_contactor_mgr_mdl,49%,39%,83%
+event recorder,event_recorder_mdl,64%,56%,99%
+aux speed indicator,aux_spd_indicator_comm_mdl,52%,86%,99%
+torque,trac_mtr_current_ref_mdl,66%,50%,98%
+torque,pinion_end_bearing_protection_mdl,88%,89%,100%
+torque,trac_mtr_torque_fdbk_calc_mdl,2%,7%,33%
+torque,trq_limit_distribution_mdl,62%,70%,98%
+torque,trac_mtr_gnd_protection_mdl,10%,34%,100%
+torque,power_train_mode_mgr_mdl,28%,60%,95%
+torque,power_train_mdl,50%,55%,100%
+torque,power_train_axle_calc_mdl,50%,59%,100%
+torque,motoring_power_regulator_mdl,60%,63%,100%
+torque,trac_mtr_mode_mgr_mdl,83%,49%,68%
+torque,motoring_mode_mgr_mdl,25%,25%,67%
+torque,vi_test_mgr_mdl,87%,90%,99%
+torque,wheel_diameter_deration_mdl,69%,42%,89%
+torque,motoring_power_reference_mdl,23%,11%,58%
+torque,motoring_link_volt_reference_mdl,21%,47%,69%

@@ -68,7 +68,7 @@
       <div class="flex flex-col">
         <h1 class="text-2xl font-bold mt-2">Coverage report</h1>
         <h1 class="text-xl mt-2">
-            <span class="text-xl font-bold"> Created date:</span>  
+            <span class="text-xl font-bold"> Test date:</span>  
             <span class="text-xl"> 2024-July-26 10:38:53</span>
         </h1>
         <h2 class="text-xl font-bold mt-2">
@@ -151,7 +151,7 @@
           
             <tr class="border-b-2 border-gray-100">
               <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">
-                <a href="/project6a?container={row.column1}" class="underline hover:bg-[rgba(44,188,255,0.4)]">
+                <a href="/project6a?container={row.column1}" class="hover:underline hover:bg-[rgba(44,188,255,0.4)]">
                     {#if row.column1 === 'con-audio-alarms'}
                         {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
                     {:else if row.column1 === 'con-aux-speed-indicator'}
@@ -187,7 +187,7 @@
                     {:else if row.column1 === 'con-audio-alarm'}
                         {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
                     {:else}
-                        {row.column1} <span class="text-yellow-400">(No test cases)</span>
+                        {row.column1} <span class="text-yellow-400">(no test cases)</span>
                     {/if}
                   </a>
               </td>

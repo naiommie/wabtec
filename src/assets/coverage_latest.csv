@@ -1,0 +1,63 @@
+aux inverter control,trac_inv_blower_mtr_mgr_mdl,94%,100%,100%
+aux inverter control,tbv_panel_mgr_mdl,83%,82%,100%
+aux inverter control,magnetic_blower_mtr_mgr_mdl,97%,100%,100%
+aux inverter control,mbv_panel_mgr_mdl,83%,82%,100%
+aux inverter control,axi_comms_mgr_mdl,80%,82%,100%
+aux inverter control,dhb_panel_mgr_mdl,89%,76%,100%
+aux inverter control,aux_blower_mtr_mgr_mdl,94%,100%,100%
+aux inverter control,abv_panel_mgr_mdl,84%,87%,100%
+consist gateway,consist_control_trail_mdl,41%,51%,98%
+consist gateway,cmg_server_mdl,26%,33%,55%
+audio alarms,serial_lsi_aap_com_mdl,35%,72%,100%
+rail adhesion,sanding_control_mdl,74%,81%,100%
+high voltage,prop_bus_power_fdbk_calc_mdl,83%,100%,100%
+high voltage,link_voltage_feedback_mdl,89%,72%,98%
+high voltage,link_cfgrator_mdl,78%,94%,100%
+high voltage,ground_fault_control_mdl,37%,48%,51%
+high voltage,dc_link_diagnostics_mdl,77%,85%,99%
+air brake management,penalty_brake_mdl,100%,99%,100%
+air brake management,overspeed_mdl,58%,63%,100%
+air brake management,end_of_train_mdl,41%,50%,95%
+air brake management,reset_alerter_mdl,50%,84%,98%
+air brake management,enable_alerter_mdl,50%,50%,66%
+air brake management,end_of_train_comm_mdl,43%,64%,77%
+air brake management,control_alerter_mdl,79%,72%,100%
+air brake management,alerter_mdl,67%,73%,99%
+air brake management,air_brake_comms_mdl,55%,84%,99%
+display,language_mdl,96%,93%,100%
+display,event_translator_mdl,76%,79%,100%
+display,dynamic_brake_warn_mdl,70%,55%,98%
+display,app_distance_counter_mdl,94%,76%,99%
+display,display_state_mdl,82%,77%,100%
+display,incident_reset_mdl,86%,100%,100%
+display,display_diagnostics_mdl,62%,68%,100%
+display,access_control_mdl,73%,79%,100%
+maintenance charge control,wir_mgr_mdl,77%,84%,100%
+maintenance charge control,mcir_mgr_mdl,50%,100%,100%
+maintenance charge control,maintenance_charging_volt_ref_mdl,86%,94%,92%
+maintenance charge control,maintenance_charging_mode_mgr_mdl,89%,89%,100%
+maintenance charge control,mcc_mgr_mdl,50%,100%,100%
+maintenance charge control,maintenance_charging_control_mdl,50%,50%,100%
+maintenance charge control,maintenance_charger_mgr_mdl,61%,81%,99%
+high voltage aux bus,hv_aux_bus_mode_mgr_mdl,84%,94%,100%
+high voltage aux bus,fpm_inverter_vi_test_mgr_mdl,84%,83%,100%
+high voltage aux bus,fpm_inverter_mode_mgr_mdl,78%,77%,100%
+high voltage aux bus,hv_aux_bus_480_diagnostic_mdl,64%,72%,97%
+high voltage aux bus,hv_aux_bus_load_seqncr_mdl,86%,81%,100%
+high voltage aux bus,fpm_inverter_diagnostics_mgr_mdl,69%,88%,100%
+lights control,lights_mdl,25%,40%,100%
+db modem,db_modem_comms_mdl,100%,94%,100%
+db modem,db_modem_mdl,47%,53%,88%
+locomotive speed,subapp_locked_axle_wheel_slide_mdl,66%,74%,100%
+locomotive speed,enhanced_locked_axle_mdl,72%,81%,99%
+switchgear control,reverser_switch_mgr_mdl,57%,68%,100%
+switchgear control,fdcr_manager_mdl,81%,86%,100%
+switchgear control,cutout_relay_mgr_mdl,67%,80%,100%
+switchgear control,battery_interrupt_contactor_manager_mdl,65%,83%,100%
+event recorder,event_recorder_mdl,64%,56%,99%
+aux speed indicator,aux_spd_indicator_comm_mdl,52%,86%,99%
+energy storage,tr_mitigation_mdl,57%,55%,100%
+energy storage,battery_electric_start_stop_arbiter_mdl,82%,91%,100%
+axle powerup,wayside_transfer_switch_mgr_mdl,90%,88%,100%
+axle powerup,aux_pwr_src_mgr_mdl,78%,89%,100%
+axle powerup,aux_load_calculation_mdl,92%,75%,100%

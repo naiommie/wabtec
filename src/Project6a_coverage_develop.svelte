@@ -11,7 +11,7 @@
     });
   
     async function fetchCSV(selectedContainer: string | null = null) {
-      const response = await fetch('src/assets/coverage_results.csv');
+      const response = await fetch('src/assets/coverage_develop.csv');
       const csvBlob = await response.blob();
       const csvText = await new Response(csvBlob).text();
       csvData = parseCSV(csvText, selectedContainer);
@@ -37,14 +37,14 @@
   
   <div class="mx-8 rounded-lg bg-[rgba(0,0,0,0.2)] p-10 mt-10 text-gray-100">
     <div class="flex justify-between items-start">
-        <a href="/project6" class="btn hover:bg-[rgba(255,255,255,0.75)]">Back to container list...</a>
+        <a href="/project7" class="btn hover:bg-[rgba(255,255,255,0.75)]">Back to container list...</a>
     </div>
     <div class="flex justify-between items-start">
       <div class="flex flex-col">
-        <h1 class="text-2xl font-bold mt-2">Coverage report</h1>
+        <h1 class="text-2xl font-bold mt-2">'{selectedContainer}' on the 'develop' branch</h1>
         <h1 class="text-xl mt-2">
             <span class="text-xl font-bold"> Test date:</span>  
-            <span class="text-xl"> 2024-01-27 18:03:53</span>
+            <span class="text-xl"> 2024-July-28 00:00:00</span>
         </h1>
         <h2 class="text-xl font-bold mt-2">
           <span class="text-xl"> Rating: </span> 

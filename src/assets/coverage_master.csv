@@ -1,0 +1,28 @@
+audio alarms,serial_lsi_aap_com_mdl,35%,72%,100%
+rail adhesion,sanding_control_mdl,64%,74%,95%
+high voltage,dyn_brk_grid_contactor_mgr_mdl,22%,24%,53%
+high voltage,dyn_brk_grid_blower_mgr_mdl,55%,51%,96%
+high voltage,dyn_brk_grid_resistor_mgr_mdl,36%,41%,92%
+high voltage,dyn_brk_grid_mgr_mdl,48%,42%,96%
+high voltage,prop_bus_power_fdbk_calc_mdl,75%,100%,100%
+power conversion,trac_alt_volt_ref_mdl,32%,41%,0%
+air brake management,penalty_brake_mdl,100%,99%,100%
+air brake management,overspeed_mdl,58%,63%,100%
+air brake management,end_of_train_mdl,41%,50%,95%
+air brake management,reset_alerter_mdl,50%,84%,98%
+air brake management,enable_alerter_mdl,69%,57%,77%
+air brake management,end_of_train_comm_mdl,43%,64%,77%
+air brake management,control_alerter_mdl,81%,75%,100%
+air brake management,alerter_mdl,65%,73%,99%
+air brake management,air_brake_comms_mdl,55%,84%,99%
+display,language_mdl,96%,93%,100%
+display,event_translator_mdl,76%,79%,100%
+display,dynamic_brake_warn_mdl,70%,55%,98%
+display,app_distance_counter_mdl,94%,76%,99%
+display,display_state_mdl,82%,77%,100%
+display,incident_reset_mdl,86%,100%,100%
+display,display_diagnostics_mdl,62%,68%,100%
+display,access_control_mdl,73%,79%,100%
+db modem,db_modem_comms_mdl,100%,94%,100%
+db modem,db_modem_mdl,47%,52%,88%
+event recorder,event_recorder_mdl,64%,56%,99%
