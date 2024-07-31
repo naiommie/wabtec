@@ -1,4 +1,7 @@
 <script lang="ts">
+    import ProgressBar from './progress_bar.svelte';
+    import ColoringBg from './coloring_bg.svelte';
+    import Sorting from './sorting.svelte';
     let csvData: { column1: string; column3: string; column4: string; column5: string }[] = [];
     let sortColumn: 'column3' | 'column4' | 'column5' | null = null;
     let sortDirection: 'asc' | 'desc' = 'asc';
@@ -73,14 +76,15 @@
     <h1 class="text-2xl font-bold mt-2">Please select the branch</h1>
     <div class="m-4 flex space-x-2">
         
-             <button
-               class="px-4 py-2 rounded text-white "
-               class:bg-green-500={selectedFile === 'coverage_master'}
-               class:bg-transparent={selectedFile !== 'coverage_master'}
-               on:click={() => handleFileChange('coverage_master')}
-             >
-               master
-             </button>
+              <button
+                class="px-4 py-2 rounded text-white"  
+                class:bg-green-500={selectedFile === 'coverage_master'}
+                class:bg-transparent={selectedFile !== 'coverage_master'}
+                on:click={() => handleFileChange('coverage_master')}
+              >
+                master
+              </button>
+              
              <button
                class="px-4 py-2 rounded text-white"  
                class:bg-green-500={selectedFile === 'coverage_develop'}
@@ -89,6 +93,7 @@
              >
                develop
              </button>
+             
              <button
                class:bg-green-500={selectedFile === 'coverage_latest'}
                class:bg-transparent={selectedFile !== 'coverage_latest'}
@@ -112,26 +117,26 @@
         </h2>
       </div>
       <div class="flex flex-col items-end">
-        <table class="border-2 border-gray-100 text-lg">
+        <table>
           <thead>
-            <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
+            <tr class="text-center text-lg divide-x border-2">
                 <th></th>
-              <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Decision</th>
-              <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Condition</th>
-              <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Execution</th>
+              <th scope="col">Decision</th>
+              <th scope="col">Condition</th>
+              <th scope="col">Execution</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-                <td class="px-2 py-1 text-center text-lg border-2 font-bold border-gray-100">Total Coverage</td>
-                <td class="px-2 py-1 text-center text-lg border-2 border-gray-100" style="background-color: {(csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length) < 75 ? 'red' : (csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length) >= 75 && (csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">
-                {(csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length).toFixed(1)}%
+            <tr class="px-2 py-1 text-center text-lg divide-x divide-y border-2 border-gray-100 text-gray-100">
+                <td class="font-bold">Total Coverage</td>
+                <td> 
+                  <ColoringBg value={(csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length).toFixed(1)}/>
                 </td>
-                <td class="px-2 py-1 text-center text-lg border-2 border-gray-100" style="background-color: {(csvData.reduce((sum, row) => sum + parseFloat(row.column4), 0) / csvData.length) < 75 ? 'red' : (csvData.reduce((sum, row) => sum + parseFloat(row.column4), 0) / csvData.length) >= 75 && (csvData.reduce((sum, row) => sum + parseFloat(row.column4), 0) / csvData.length) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">
-                {(csvData.reduce((sum, row) => sum + parseFloat(row.column4), 0) / csvData.length).toFixed(1)}%
+                <td>
+                  <ColoringBg value={(csvData.reduce((sum, row) => sum + parseFloat(row.column4), 0) / csvData.length).toFixed(1)}/>
                 </td>
-                <td class="px-2 py-1 text-center text-lg border-2 border-gray-100" style="background-color: {(csvData.reduce((sum, row) => sum + parseFloat(row.column5), 0) / csvData.length) < 75 ? 'red' : (csvData.reduce((sum, row) => sum + parseFloat(row.column5), 0) / csvData.length) >= 75 && (csvData.reduce((sum, row) => sum + parseFloat(row.column5), 0) / csvData.length) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">
-                {(csvData.reduce((sum, row) => sum + parseFloat(row.column5), 0) / csvData.length).toFixed(1)}%
+                <td>
+                  <ColoringBg value={(csvData.reduce((sum, row) => sum + parseFloat(row.column5), 0) / csvData.length).toFixed(1)}/>
                 </td>
             </tr>
           </tbody>
@@ -141,83 +146,80 @@
   
    
     <div class="overflow-x-auto">
-      <table class="w-full mt-4 text-lg border-2 border-gray-100">
+      <table class="w-full mt-4 text-lg border-2">
         <thead>
-          <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100" rowspan="2">Repositories</th>
-            <th
-              scope="col"
-              class="px-2 py-1 text-center text-lg border-2 border-gray-100 cursor-pointer"
-              colspan="2"
-              on:click={() => handleSort('column3')}
-            >
-              Decision coverage {sortColumn === 'column3' ? (sortDirection === 'asc' ? '⬆' : '⬇') : '⬆⬇'}
+          <tr class="divide-x text-center text-lg">
+            <th scope="col" class="border-2" rowspan="2">Repositories</th>
+            <th colspan="2">
+              <Sorting 
+                label="Decision coverage"
+                {sortColumn}
+                {sortDirection}
+                onSort={() => handleSort('column3')}
+                />
             </th>
-            <th
-              scope="col"
-              class="px-2 py-1 text-center text-lg border-2 border-gray-100 cursor-pointer"
-              colspan="2"
-              on:click={() => handleSort('column4')}
-            >
-              Condition coverage {sortColumn === 'column4' ? (sortDirection === 'asc' ? '⬆' : '⬇') : '⬆⬇'}
+            <th colspan="2">
+              <Sorting 
+                label="Condition coverage"
+                {sortColumn}
+                {sortDirection}
+                onSort={() => handleSort('column4')}
+              />
             </th>
-            <th
-              scope="col"
-              class="px-2 py-1 text-center text-lg border-2 border-gray-100 cursor-pointer"
-              colspan="2"
-              on:click={() => handleSort('column5')}
-            >
-              Execution coverage {sortColumn === 'column5' ? (sortDirection === 'asc' ? '⬆' : '⬇') : '⬆⬇'}
+            <th colspan="2">
+              <Sorting 
+                label="Execution coverage"
+                {sortColumn}
+                {sortDirection}
+                onSort={() => handleSort('column5')}
+              />
             </th>
+              
           </tr>
-          <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate bar</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate %</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate bar</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate %</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate bar</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Rate %</th>
+          <tr class="px-2 py-1 divide-x text-center border-2 text-lg">
+            <th scope="col">Rate bar</th>
+            <th scope="col">Rate %</th>
+            <th scope="col">Rate bar</th>
+            <th scope="col">Rate %</th>
+            <th scope="col">Rate bar</th>
+            <th scope="col">Rate %</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-x divide-gray-100">
+        
+        <tbody>
           {#each sortedData as row}
           
-            <tr class="border-b-2 border-gray-100">
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">
+            <tr class="border-2">
+              <td class="px-2 py-1 text-lg border-2">
                 <a href="/project6a_{selectedFile}?container={row.column1}" class="hover:underline hover:bg-[rgba(44,188,255,0.4)]">
                     {row.column1} 
                   </a>
               </td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100">
-                <div class="w-full h-4 bg-gray-300 rounded">
-                  <div
-                    class="h-full rounded transition-all duration-300"
-                    style="width: {parseFloat(row.column3) / 100 * 100}%; background-color: {parseFloat(row.column3) < 75 ? 'red' : parseFloat(row.column3) >= 75 && parseFloat(row.column3) < 90 ? 'yellow' : 'green'}"
-                  ></div>
-                </div>
+              <td> 
+                <ProgressBar value={row.column3}/>  
               </td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100" style="background-color: {parseFloat(row.column3) < 75 ? 'red' : parseFloat(row.column3) >= 75 && parseFloat(row.column3) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">{row.column3}%</td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100">
-                <div class="w-full h-4 bg-gray-300 rounded">
-                  <div
-                    class="h-full rounded transition-all duration-300"
-                    style="width: {parseFloat(row.column4) / 100 * 100}%; background-color: {parseFloat(row.column4) < 75 ? 'red' : parseFloat(row.column4) >= 75 && parseFloat(row.column4) < 90 ? 'yellow' : 'green'}"
-                  ></div>
-                </div>
+              <td class="border-2">
+                <ColoringBg value={row.column3}/>
               </td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100" style="background-color: {parseFloat(row.column4) < 75 ? 'red' : parseFloat(row.column4) >= 75 && parseFloat(row.column4) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">{row.column4}%</td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100">
-                <div class="w-full h-4 bg-gray-300 rounded">
-                  <div
-                    class="h-full rounded transition-all duration-300"
-                    style="width: {parseFloat(row.column5) / 100 * 100}%; background-color: {parseFloat(row.column5) < 75 ? 'red' : parseFloat(row.column5) >= 75 && parseFloat(row.column5) < 90 ? 'yellow' : 'green'}"
-                  ></div>
-                </div>
+              <td>
+                <ProgressBar value={row.column4}/>
               </td>
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-b-2 border-gray-100" style="background-color: {parseFloat(row.column5) < 75 ? 'red' : parseFloat(row.column5) >= 75 && parseFloat(row.column5) < 90 ? 'yellow' : 'green'}; color: black; font-weight: bold;">{row.column5}%</td>
+              <td class="border-2">
+                <ColoringBg value={row.column4}/>
+              </td>
+              <td>
+                <ProgressBar value={row.column5}/>
+              </td>
+              <td class="border-2">
+                <ColoringBg value={row.column5}/>
+              </td>
             </tr>
           {/each}
         </tbody>
       </table>
     </div>
   </div>
+
+  <style>
+    
+  </style>
