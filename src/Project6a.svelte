@@ -1,10 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import ProgressBar from './progress_bar.svelte';
     import ColoringBg from './coloring_bg.svelte';
-    import Sorting from './sorting.svelte';
   
-    let csvData: { column2: string; column3: string; column4: string; column5: string }[] = [];
+    let csvData: { column2: string; column3: string; column4: string; column5: string; column6: string }[] = [];
     let selectedContainer: string | null = null;
   
     onMount(async () => {
@@ -14,13 +12,13 @@
     });
   
     async function fetchCSV(selectedContainer: string | null = null) {
-      const response = await fetch('src/assets/coverage_results.csv');
+      const response = await fetch('src/assets/to_test_complexity.csv');
       const csvBlob = await response.blob();
       const csvText = await new Response(csvBlob).text();
       csvData = parseCSV(csvText, selectedContainer);
     }
   
-    function parseCSV(csvText: string, selectedContainer: string | null = null): { column2: string; column3: string; column4: string; column5: string }[] {
+    function parseCSV(csvText: string, selectedContainer: string | null = null): { column2: string; column3: string; column4: string; column5: string; column6: string }[] {
       const rows = csvText.trim().split('\n');
       const filteredData = selectedContainer
         ? rows.filter((row) => row.startsWith(selectedContainer))
@@ -33,6 +31,7 @@
           column3: columns[2],
           column4: columns[3],
           column5: columns[4],
+          column6: columns[5],
         };
       });
     }
@@ -44,7 +43,9 @@
     </div>
     <div class="flex justify-between items-start">
       <div class="flex flex-col">
-        <h1 class="text-2xl font-bold mt-2">Coverage report</h1>
+        <h1 class="text-2xl font-bold mt-2">
+          The "{selectedContainer}" all models
+        </h1>
         <h1 class="text-xl mt-2">
             <span class="text-xl font-bold"> Test date:</span>  
             <span class="text-xl"> 2024-01-27 18:03:53</span>
@@ -57,18 +58,20 @@
         </h2>
       </div>
       <div class="flex flex-col items-end">
-        <table class="border-2 border-gray-100 text-lg">
+        <table class="border-2 text-lg">
           <thead>
-            <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-                <th></th>
+            <tr class="divide-x border-2">
+              <th></th>
               <th scope="col" class="px-2 py-1">Decision</th>
               <th scope="col" class="px-2 py-1">Condition</th>
               <th scope="col" class="px-2 py-1">Execution</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="px-2 py-1 text-center text-lg divide-x divide-y border-2 border-gray-100 text-gray-100">
-                <td class="px-2 py-1 font-bold">Total Coverage</td>
+            <tr class="px-2 py-1 font-bold text-lg divide-x">
+                <td class="px-2">
+                  Total Coverage
+                </td>
                 <td> 
                   <ColoringBg value={(csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length).toFixed(1)}/>
                 </td>
@@ -84,19 +87,25 @@
       </div>
     </div>
     <div class="overflow-x-auto">
-      <table class="w-full mt-4 text-lg border-2 border-gray-100">
+      <table class="w-full mt-4 text-lg border-2">
         <thead>
-          <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Repositories</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Decision coverage</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Condition coverage</th>
-            <th scope="col" class="px-2 py-1 text-center text-lg border-2 border-gray-100">Execution coverage</th>
+          <tr class="divide-x border-2">
+            <th scope="col">Repositories</th>
+            <th scope="col">Complexity</th>
+            <th scope="col">Decision coverage</th>
+            <th scope="col">Condition coverage</th>
+            <th scope="col">Execution coverage</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-x divide-gray-100">
+        <tbody class="divide-y divide-x">
           {#each csvData as row}
-            <tr class="border-b-2 border-gray-100">
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">{row.column2}</td>
+            <tr class="divide-x">
+              <td class="px-2 py-1">
+                {row.column2}
+              </td>
+              <td class="px-2 py-1">
+                {row.column6}
+              </td>
               <td class="border-2">
                 <ColoringBg value={row.column3}/>
               </td>

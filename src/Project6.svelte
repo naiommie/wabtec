@@ -2,20 +2,20 @@
     import ProgressBar from './progress_bar.svelte';
     import ColoringBg from './coloring_bg.svelte';
     import Sorting from './sorting.svelte';
-    let csvData: { column1: string; column3: string; column4: string; column5: string }[] = [];
-    let sortColumn: 'column3' | 'column4' | 'column5' | null = null;
+    let csvData: { column1: string; column3: string; column4: string; column5: string; column6: string }[] = [];
+    let sortColumn: 'column3' | 'column4' | 'column5' | 'column6' | null = null;
     let sortDirection: 'asc' | 'desc' = 'asc';
   
     async function fetchCSV() {
-      const response = await fetch('src/assets/coverage_results.csv');
+      const response = await fetch('src/assets/to_test_complexity.csv');
       const csvBlob = await response.blob();
       const csvText = await new Response(csvBlob).text();
       csvData = parseCSV(csvText);
     }
   
-    function parseCSV(csvText: string): { column1: string; column3: string; column4: string; column5: string }[] {
+    function parseCSV(csvText: string): { column1: string; column3: string; column4: string; column5: string; column6: string }[] {
       const rows = csvText.trim().split('\n');
-      const uniqueContainers: { [key: string]: { column1: string; column3: number[]; column4: number[]; column5: number[] } } = {};
+      const uniqueContainers: { [key: string]: { column1: string; column3: number[]; column4: number[]; column5: number[]; column6: number[] } } = {};
   
       rows.forEach((row) => {
         const columns = row.split(',');
@@ -27,19 +27,22 @@
             column3: [],
             column4: [],
             column5: [],
+            column6: [],
           };
         }
   
         uniqueContainers[container].column3.push(parseFloat(columns[2]));
         uniqueContainers[container].column4.push(parseFloat(columns[3]));
         uniqueContainers[container].column5.push(parseFloat(columns[4]));
+        uniqueContainers[container].column6.push(parseFloat(columns[5]));
       });
   
-      return Object.values(uniqueContainers).map(({ column1, column3, column4, column5 }) => ({
+      return Object.values(uniqueContainers).map(({ column1, column3, column4, column5, column6 }) => ({
         column1,
         column3: ((column3.reduce((sum, val) => sum + val, 0) / column3.length) || 0).toFixed(1),
         column4: ((column4.reduce((sum, val) => sum + val, 0) / column4.length) || 0).toFixed(1),
         column5: ((column5.reduce((sum, val) => sum + val, 0) / column5.length) || 0).toFixed(1),
+        column6: ((column6.reduce((sum, val) => sum + val, 0) / column6.length) || 0).toFixed(1),
       }));
     }
   
@@ -51,7 +54,7 @@
         })
       : csvData;
   
-    function handleSort(column: 'column3' | 'column4' | 'column5') {
+    function handleSort(column: 'column3' | 'column4' | 'column5' | 'column6') {
       if (sortColumn === column) {
         sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
       } else {
@@ -69,6 +72,7 @@
     </div>
     <div class="flex justify-between items-start">
       <div class="flex flex-col">
+        <h1 class="text-2xl font-bold mt-2">The coverage report for all containers</h1>
         <h1 class="text-xl mt-2">
             <span class="text-xl font-bold"> Test date:</span>  
             <span class="text-xl"> 2024-July-28 00:00:00</span>
@@ -83,7 +87,7 @@
       <div class="flex flex-col items-end">
         <table>
           <thead>
-            <tr class="text-center text-lg divide-x border-2">
+            <tr class="text-lg divide-x border-2">
                 <th></th>
                 <th scope="col" class="px-2 py-1">Decision</th>
                 <th scope="col" class="px-2 py-1">Condition</th>
@@ -91,8 +95,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="px-2 py-1 text-center text-lg divide-x divide-y border-2 border-gray-100 text-gray-100">
-                <td class="px-2 py-1 font-bold">Total Coverage</td>
+            <tr class="px-2 py-1 text-lg divide-x border-2">
+                <td class="px-2 py-1 font-bold">
+                  Total Coverage
+                </td>
                 <td> 
                   <ColoringBg value={(csvData.reduce((sum, row) => sum + parseFloat(row.column3), 0) / csvData.length).toFixed(1)}/>
                 </td>
@@ -112,8 +118,18 @@
     <div class="overflow-x-auto">
       <table class="w-full mt-4 text-lg border-2">
         <thead>
-          <tr class="divide-x text-center text-lg">
-            <th scope="col" class="border-2" rowspan="2">Repositories</th>
+          <tr class="divide-x text-lg">
+            <th scope="col" rowspan="2">
+              Repositories
+            </th>
+            <th scope="col" rowspan="2">
+              <Sorting
+                label="Complexity"
+                {sortColumn}
+                {sortDirection}
+                onSort={() => handleSort('column6')}
+                />
+            </th>
             <th colspan="2">
               <Sorting 
                 label="Decision coverage"
@@ -138,10 +154,9 @@
                 onSort={() => handleSort('column5')}
               />
             </th>
-              
           </tr>
-          <tr class="px-2 py-1 divide-x text-center border-2 text-lg">
-            <th scope="col">Rate bar</th>
+          <tr class="divide-x border-2 text-lg">
+            <th class="border-l-2" scope="col">Rate bar</th>
             <th scope="col">Rate %</th>
             <th scope="col">Rate bar</th>
             <th scope="col">Rate %</th>
@@ -151,9 +166,8 @@
         </thead>
         <tbody class="divide-y divide-x divide-gray-100">
           {#each sortedData as row}
-          
-            <tr class="border-b-2 border-gray-100">
-              <td class="px-2 py-1 whitespace-pre-line text-lg border-r-2 border-gray-100">
+            <tr>
+              <td class="px-2 border-r-2 text-lg">
                 <a href="/project6a?container={row.column1}" class="hover:underline hover:bg-[rgba(44,188,255,0.4)]">
                     {#if row.column1 === 'con-audio-alarms'}
                         {row.column1} <span class="text-gray-400">(2024-May-08 14:33:34)</span>
@@ -193,6 +207,9 @@
                         {row.column1} <span class="text-yellow-400">(no test cases)</span>
                     {/if}
                   </a>
+              </td>
+              <td class="px-2 border-2">
+                {row.column6}
               </td>
               <td> 
                 <ProgressBar value={row.column3}/>  
