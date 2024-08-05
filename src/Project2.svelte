@@ -1,95 +1,97 @@
 <script lang="ts">
-  let csvData: { column1: string; column2: string }[] = [];
 
-  async function fetchCSV() {
-    const response = await fetch('src/assets/test_final2.csv');
-    const csvBlob = await response.blob();
-    const csvText = await new Response(csvBlob).text();
-    csvData = parseCSV(csvText);
-  }
-
-  function parseCSV(csvText: string): { column1: string; column2: string }[] {
-    const rows = csvText.trim().split('\n');
-    return rows.map((row) => {
-      const columns = [];
-      let currentColumn = '';
-      let inQuotes = false;
-
-      for (let i = 0; i < row.length; i++) {
-        const char = row[i];
-
-        if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
-          columns.push(currentColumn.trim());
-          currentColumn = '';
-        } else {
-          currentColumn += char;
-        }
-      }
-
-      columns.push(currentColumn.trim());
-      return { column1: columns[0], column2: columns[1] };
-    });
-  }
-
-  fetchCSV();
 </script>
 
 <div class="mx-8 rounded-lg bg-[rgba(0,0,0,0.2)] p-10 mt-10 text-gray-100">
   <div class="flex justify-between items-start">
     <a href="/projects" class="underline hover:bg-[rgba(0,0,0,0.2)]">Back to project list...</a>
   </div>
+  <h1 class="text-2xl font-bold my-4">SES RAT vs QVScribe requirement tools comparison</h1>
+  
+  <h1 class="text-xl font-bold mt-2">Decision Matrix table</h1>
 
-  <h1 class="text-2xl font-bold mt-2">SES RAT vs QVScribe requirement tools comparison</h1>
-  <div class="overflow-x-auto">
-    <table class="w-full mt-4 text-xs border-2 border-gray-100">
-      <thead>
-        <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-r-2 border-gray-100 w-1/5"></th>
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-r-2 border-gray-100 w-2/5">QVscribe summary</th>
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium w-2/5">SES summary</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-x divide-gray-100">
-        <tr class="border-b-2 border-gray-100">
-          <td class="px-2 py-1 text-center whitespace-pre-line text-xs border-r-2 border-gray-100">Complexity</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-r-2 border-gray-100">Moderate</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-b-2 border-gray-100">High</td>
-        </tr>
-        <tr class="border-b-2 border-gray-100">
-          <td class="px-2 py-1 text-center whitespace-pre-line text-xs border-r-2 border-b-2 border-gray-100">Clicks</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-r-2 border-b-2 border-gray-100">20</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-b-2 border-gray-100">15</td>
-        </tr>
-        <tr class="border-b-2 border-gray-100">
-          <td class="px-2 py-1 text-center whitespace-pre-line text-xs border-b-2 border-r-2 border-gray-100">Time Spent</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-r-2 border-gray-100">~16 minutes</td>
-          <td class="px-2 py-1 whitespace-pre-line text-xs border-r-2 border-gray-100">~33 minutes 10 seconds</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="text-xl font-bold mt-4">Correctness</h2>
-  <p class="text-l mt-2"> This table lists 217 requirements for which QVscribe gave a score of 100 and SES gave a score of 0. For context, an SES output is also provided. </p>
-  <p class="text-l"> It can be seen that all these requirements should be low scored, however, QVscribe doesn't low the score for the passive voice and terms like "all" </p>
-  <div class="overflow-x-auto">
-    <table class="w-full mt-4 text-xs border-2 border-gray-100">
-      <thead>
-        <tr class="divide-x divide-y border-b-2 border-gray-100 text-gray-100">
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">#</th>
-          <th scope="col" class="px-2 py-1 text-center text-xs font-medium border-2 border-gray-100 ">Requirement</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-x divide-gray-100">
-        {#each csvData.entries() as [index, row]}
-          <tr class="border-b-2 border-gray-100">
-            <td class="px-2 py-1 text-center whitespace-pre-line text-xs border-r-2 border-gray-100">{index + 1}</td>
-            <td class="px-2 py-1 whitespace-pre-line text-xs border-b-2 border-r-2 border-gray-100">{row.column1}</td>
+    <div class="overflow-x-auto">
+      <table class="w-full mt-4 text-lg border-2">
+        <thead>
+          <tr class="divide-x text-lg bg-[rgba(0,0,0,0.4)]">
+            <th class="border-2">CRITERIA</th>
+            <th class="border-2">WEIGHT</th>
+            <th class="border-2">SES RAT</th>
+            <th class="border-2">QVSCRIBE</th>
+            <th class="border-2">OneBot</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody class="text-center divide-y divide-x divide-gray-100">
+          <tr>
+            <td class="border-2">
+              <a href="/project2a" class="underline hover:bg-[rgba(0,0,0,0.2)]">1. Accuracy</a>
+            </td>
+            <td class="border-2">10</td>
+            <td class="border-2">9 / 10</td>
+            <td class="border-2">7 / 10</td>
+            <td class="border-2">
+              <a href="/project2c" class=" bg-[rgba(87,154,209,0.59)] hover:underline">3 / 10</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border-2">
+              <a href="/project2e" class="underline hover:bg-[rgba(0,0,0,0.2)]">2. Reporting</a>
+            </td>
+            <td class="border-2">8</td>
+            <td class="border-2">9 / 10</td>
+            <td class="border-2">2 / 10</td>
+            <td class="border-2">7 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">3. Price</td>
+            <td class="border-2">7</td>
+            <td class="border-2">5 / 10</td>
+            <td class="border-2">5 / 10</td>
+            <td class="border-2">10 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">
+              <a href="/project2d" class="underline hover:bg-[rgba(0,0,0,0.2)]">4. Support</a>
+            </td>
+            <td class="border-2">6</td>
+            <td class="border-2">5 / 10</td>
+            <td class="border-2">7 / 10</td>
+            <td class="border-2">0 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">
+              <a href="/project2b" class="underline hover:bg-[rgba(0,0,0,0.2)]">5. UI/UX</a>
+            </td>
+            <td class="border-2">5</td>
+            <td class="border-2">1 / 10</td>
+            <td class="border-2">9 / 10</td>
+            <td class="border-2">10 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">
+              <a href="/project2j" class="underline hover:bg-[rgba(0,0,0,0.2)]">6. Customization</a>
+            </td>
+            <td class="border-2">4</td>
+            <td class="border-2">8 / 10</td>
+            <td class="border-2">8 / 10</td>
+            <td class="border-2">10 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">7. Scalability</td>
+            <td class="border-2">3</td>
+            <td class="border-2">8 / 10</td>
+            <td class="border-2">3 / 10</td>
+            <td class="border-2">1 / 10</td>
+          </tr>
+          <tr>
+            <td class="border-2">Total Score</td>
+            <td class="border-2">MAX 430</td>
+            <td class="border-2 text-[rgb(255,215,0)] font-bold">288 (67%)</td>
+            <td class="border-2 text-[rgb(192,192,192)] font-bold">250 (58%)</td>
+            <td class="border-2 text-[rgb(205,127,50)] font-bold">249 (58%)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
 </div>

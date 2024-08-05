@@ -5,6 +5,12 @@
   import Projects from './Projects.svelte';
   import Project1 from './Project1.svelte';
   import Project2 from './Project2.svelte';
+  import Project2a from './Project2a.svelte';
+  import Project2b from './Project2b.svelte';
+  import Project2c from './Project2c.svelte';
+  import Project2d from './Project2d.svelte';
+  import Project2e from './Project2e.svelte';
+  import Project2j from './Project2j.svelte';
   import Project3 from './Project3.svelte';
   import Project4 from './Project4.svelte';
   import Project5 from './Project5.svelte';
@@ -45,6 +51,12 @@
       <Route path="/projects" component={Projects} />
       <Route path="/project1" component={Project1} />
       <Route path="/project2" component={Project2} />
+      <Route path="/project2a" component={Project2a} />
+      <Route path="/project2b" component={Project2b} />
+      <Route path="/project2c" component={Project2c} />
+      <Route path="/project2d" component={Project2d} />
+      <Route path="/project2e" component={Project2e} />
+      <Route path="/project2j" component={Project2j} />
       <Route path="/project3" component={Project3} />
       <Route path="/project4" component={Project4} />
       <Route path="/project5" component={Project5} />

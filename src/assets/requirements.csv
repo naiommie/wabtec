@@ -1,0 +1,18 @@
+,Installation,Preparation,Usage,Time Spent
+QVscribe,Install Qvscribe for Excel,None,"Open Excel
+Enter login and password",~ 5 minutes
+SES RAT,"FlexLM Server
+TRC License Vendor Daemon
+SQL Server Management Studio
+System Engineering Suite Server
+SES Engineering Studio","Up and run FlexLM Vender Daemon
+Up and run SQL server","Open System Engineering Suite Server 
+        1. 1. Connect to SQL server
+        1. 2. Enter login and password
+Open Excel
+        2. 1. Create column with specific names
+Open SES Engineering Studio
+        3. 1. Connect to SQL Server
+        3. 2. Create connection with Excel",~ 2 weeks
+OneBot,None,"Open Teams
+Add OneBot from Apps",Open Teams,~ 1 minute
