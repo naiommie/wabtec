@@ -92,6 +92,10 @@
           </tr>
         </tbody>
       </table>
+      
+      
     </div>
-
+    <p class=" mt-2">For Troubleshooting visit this
+        <a href="/project3" class="underline hover:bg-[rgba(0,0,0,0.2)]">page.</a>
+    </p>
 </div>

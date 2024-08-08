@@ -15,25 +15,20 @@
 
         <div class="mt-8">
             <a href="/project6" class="block text-xl font-bold hover:underline">Coverage Report</a>
-            <p class="text-lg my-2">Coverage Report on test harnesses result</p>
+            <p class="text-lg my-2">Coverage Report on test harnesses result from MathWorks team on their hotfix_mathwork_update branch.</p>
             <a href="/project6" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
         </div>
 
         <div class="mt-8">
             <a href="/project2" class="block text-xl font-bold hover:underline">SES RAT vs QVScribe requirement tools comparison</a>
-            <p class="text-lg my-2">A comparative analysis of two requirement management tools: SES RAT and QVScribe.</p>
+            <p class="text-lg my-2">A comparative analysis of two requirement management tools: SES RAT and QVScribe. Also, troubleshooting during the process.</p>
             <a href="/project2" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
         </div>
 
-        <div class="mt-8">
-            <a href="/project3" class="block text-xl font-bold hover:underline">Troubleshooting</a>
-            <p class="text-lg my-2">A collection of troubleshooting guides and solutions for various technical issues.</p>
-            <a href="/project3" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
-        </div>
 
         <div class="mt-8">
-            <a href="/project7" class="block text-xl font-bold hover:underline">Coverage report with source from unit tests on Jenkins</a>
-            <p class="text-lg my-2">This is a coverage report with data retrieved from 3 branches on Jenkins </p>
+            <a href="/project7" class="block text-xl font-bold hover:underline">Coverage report based on branches master, develop, and release_flx_rhi_swr2 retrieved from Jenkins</a>
+            <p class="text-lg my-2">This is a coverage report with data retrieved from branches master, develop, and release_flx_rhi_swr2 on Jenkins with their containers. </p>
             <a href="/project7" class=" font-bold mt-2 hover:underline" style="color: rgb(0, 147, 95);">Read more >></a>
         </div>
 

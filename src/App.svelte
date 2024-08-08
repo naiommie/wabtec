@@ -73,7 +73,7 @@
     <div class="flex flex-col space-y-2 justify-end">
       
       
-      <a href="mailto:sanzhar.shakarim@wabtec.com" class="mr-4 hover:underline">sanzhar.shakarim@wabtec.com</a>
+      <a href="mailto:shakarim.sanjar@gmail.com" class="mr-4 hover:underline">shakarim.sanjar@gmail.com</a>
       <a href="https://www.linkedin.com/in/sanzhar-shakarim-248497205/" class="mr-4 hover:underline">LinkedIn: Sanzhar Shakarim</a>
       <a href="https://t.me/Sanchozver/" class="mr-4 hover:underline">Telegram</a>
       
