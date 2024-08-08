@@ -128,7 +128,9 @@
     </div>
     <h1 class="text-2xl font-bold mt-4 mb-4">Retrieving submodule tags from gitlab project using API</h1>
     <h2 class="mb-6">This is second version of submodule project that retrieves submodule tags from a Wabtec Gitlab project using the Gitlab API. The main change is in automatic selection of branches. The process of the code can be find 
-        <a href="/project5" class="underline">here</a>
+        <a href="/project5" class="underline hover:bg-[rgba(0,0,0,0.2)]">here.</a>
+        If you want to manually select branches, you can return 
+        <a href="/project1" class="underline hover:bg-[rgba(0,0,0,0.2)]">back.</a>
     </h2>
     <p class="text-2xl text-center font-bold mb-8"> Try the code </p>
     <input type="text" bind:value={personalAccessToken} placeholder="Enter your personal access token" class="bg-[rgba(0,0,0,0.35)] rounded-lg p-2 mb-4" />
