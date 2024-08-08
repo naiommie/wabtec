@@ -44,11 +44,49 @@
     <div class="flex justify-between items-start">
       <div class="flex flex-col">
         <h1 class="text-2xl font-bold mt-2">
-          The "{selectedContainer}" all models
+          Model(s) of "{selectedContainer}"
         </h1>
         <h1 class="text-xl mt-2">
             <span class="text-xl font-bold"> Test date:</span>  
-            <span class="text-xl"> 2024-01-27 18:03:53</span>
+            <span class="text-xl"> 
+              {#if selectedContainer === 'con-audio-alarms'}
+                2024-May-08 14:33:34
+              {:else if selectedContainer === 'con-aux-speed-indicator'}
+                2024-May-12 15:25:02
+              {:else if selectedContainer === 'con-rail-adhesion'}
+                2024-May-14 13:58:39
+              {:else if selectedContainer === 'con-lights-control'}
+                2024-May-14 13:06:39
+              {:else if selectedContainer === 'con-air-brake-management'}
+                2024-May-17 14:37:44
+              {:else if selectedContainer === 'con-aux-inverter-control'}
+                2024-May-18 12:35:34
+              {:else if selectedContainer === 'con-event-recorder'}
+                2024-May-21 10:36:48
+              {:else if selectedContainer === 'con-display'}
+                2024-May-22 13:42:20
+              {:else if selectedContainer === 'con-high-voltage-aux-bus'}
+                2024-May-31 17:44:09
+              {:else if selectedContainer === 'con-axle-powerup'}
+                2024-May-31 19:28:43
+              {:else if selectedContainer === 'con-aux-equipment'}
+                2024-July-09 02:33:49
+              {:else if selectedContainer === 'con-energy-storage'}
+                2024-Jun-19 13:30:46
+              {:else if selectedContainer === 'con-locomotive-speed'}
+                2024-Jun-09 17:10:54
+              {:else if selectedContainer === 'con-locomotive-control'}
+                2024-Jun-13 15:01:10
+              {:else if selectedContainer === 'con-high-voltage'}
+                2024-Jun-16 20:34:59
+              {:else if selectedContainer === 'con-torque'}
+                2024-Jun-29 01:49:55
+              {:else if selectedContainer === 'con-audio-alarm'}
+                2024-May-08 14:33:34
+              {:else}
+                (no test cases)
+              {/if}
+            </span>
         </h1>
         <h2 class="text-xl font-bold mt-2">
           <span class="text-xl"> Rating: </span> 

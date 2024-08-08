@@ -74,7 +74,7 @@
       <div class="flex flex-col">
         <h1 class="text-2xl font-bold mt-2">The coverage report for all containers</h1>
         <h1 class="text-xl mt-2">
-            <span class="text-xl font-bold"> Test date:</span>  
+            <span class="text-xl font-bold"> Created date:</span>  
             <span class="text-xl"> 2024-July-28 00:00:00</span>
         </h1>
         <h2 class="text-xl font-bold mt-2">
