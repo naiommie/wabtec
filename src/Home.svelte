@@ -102,11 +102,11 @@
               <div class="bg-[rgba(0,0,0,0.35)] p-4 rounded-md">
                 <div class="text-lg font-black text-gray-100">Nazarbayev University</div>
                 <p class="text-gray-100">Research Assistant at Dr. Gulsim Kulsharova Lab</p>
-                <p >Presented my 
+                <p >Published my 
                   <a href="https://ieeexplore.ieee.org/document/9881355" class="underline hover:bg-[rgba(0,0,0,0.2)]">
                     paper
                   </a>
-                  at the Internation Conference held in Sweden, Sundsvall</p>
+                  at the SAS 2022 Conference held in Sweden, Sundsvall</p>
               </div>
             </div>
             <hr class="bg-primary" />

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import * as XLSX from 'xlsx';
     let personalAccessToken: string = '';
     let errorMessage: string = '';
 
@@ -116,24 +117,87 @@
     function handleRunCommitData() {
         getCommitData();
     }
+
+    function exportToExcel() {
+        const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.json_to_sheet([]);
+
+        // Add submodule names to the first row
+        XLSX.utils.sheet_add_aoa(worksheet, [['', ...submodules.map(submodule => submodule.subname)]], { origin: 'A1' });
+
+        // Add container and commit data to the worksheet
+        let rowIndex = 1;
+        for (const [containerName, selectedBranch] of Object.entries(selectedBranches)) {
+            if (selectedBranch) {
+                const commitInfos = commitData[`${containerName}-${selectedBranch}`] || [];
+                const data = [[containerName, ...commitInfos.map(info => info?.lastPipelineRef || 'N/A')]];
+                XLSX.utils.sheet_add_aoa(worksheet, data, { origin: `A${rowIndex + 1}` });
+                rowIndex += 1;
+            }
+        }
+
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Submodule Tags');
+        XLSX.writeFile(workbook, 'submodule-tags.xlsx');
+    }
+
+    function exportToJSON() {
+        const jsonContent = JSON.stringify(commitData, null, 2);
+        const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'submodule-tags.json');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function exportToCSV() {
+        const worksheet = XLSX.utils.json_to_sheet([]);
+
+        // Add submodule names to the first row
+        XLSX.utils.sheet_add_aoa(worksheet, [['', ...submodules.map(submodule => submodule.subname)]], { origin: 'A1' });
+
+        // Add container and commit data to the worksheet
+        let rowIndex = 1;
+        for (const [containerName, selectedBranch] of Object.entries(selectedBranches)) {
+            if (selectedBranch) {
+                const commitInfos = commitData[`${containerName}-${selectedBranch}`] || [];
+                const data = [[containerName, ...commitInfos.map(info => info?.lastPipelineRef || 'N/A')]];
+                XLSX.utils.sheet_add_aoa(worksheet, data, { origin: `A${rowIndex + 1}` });
+                rowIndex += 1;
+            }
+        }
+
+        const csvContent = XLSX.utils.sheet_to_csv(worksheet);
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'submodule-tags.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
 </script>
 
 <div class="mx-8 rounded-lg bg-[rgba(0,0,0,0.2)] p-10 mt-10 text-gray-100">
     <div class="flex justify-between items-start">
         <a href="/projects" class="underline hover:bg-[rgba(0,0,0,0.2)]">Back to project list...</a>
     </div>
-    <h1 class="text-2xl font-bold mt-4 mb-4">Retrieving submodule tags from gitlab project using API</h1>
+    <h1 class="text-2xl font-bold my-4">Retrieving submodule tags from gitlab project using API</h1>
     <h2 class="mb-6">This project retrieves submodule tags from a Wabtec Gitlab project using the Gitlab API. The process of the code can be find 
         <a href="/project5" class="underline hover:bg-[rgba(0,0,0,0.2)]">here.</a> 
         If you want to proceed with branch auto-selection version, please visit this 
         <a href="/project4" class="underline hover:bg-[rgba(0,0,0,0.2)]">page.</a>
     </h2>
     <p class="text-2xl text-center font-bold mb-8"> Try the code </p>
-    <input type="text" bind:value={personalAccessToken} placeholder="Enter your personal access token" class="bg-[rgba(0,0,0,0.35)] rounded-lg p-2 mb-4" />
+    <input type="password" bind:value={personalAccessToken} placeholder="Enter your personal access token" class="bg-[rgba(0,0,0,0.35)] w-1/6 rounded-lg p-2 mb-4" />
     {#if errorMessage}
         <div class="bg-red-500 text-white p-2 mb-4">{errorMessage}</div>
     {/if}
-    <button on:click={handleRefresh} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mb-4 {isLoading ? 'opacity-50 cursor-not-allowed' : ''}">
+    <button on:click={handleRefresh} class="bg-green-700 hover:bg-green-500 font-bold py-2 px-4 rounded mb-4 {isLoading ? 'opacity-50 cursor-not-allowed' : ''}">
         {#if isLoading}
             <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
         {:else}
@@ -162,32 +226,39 @@
             Press to Run
         {/if}
     </button>
-    <p class="p-4"> If you want to export data in Excel, please run this PowerShell script from 
-        <a href="https://gitlab.corp.wabtec.com/sanzhar.shakarim/coverage-report-export" class="underline hover:bg-[rgba(0,0,0,0.2)]">
-            here.
-        </a>
-    </p>
 
     {#if showTable}
         <div class="overflow-x-auto">
             <table class="w-full mt-8 text-xs">
                 <tr>
-                    <th class="text-white p-2"></th>
+                    <th class="p-2"></th>
                     {#each submodules as submodule}
-                        <th class="text-white p-2 table-auto">{submodule.subname}</th>
+                        <th class="p-2 table-auto">{submodule.subname}</th>
                     {/each}
                 </tr>
                 {#each containers as container}
                     {#if selectedBranches[container.name]}
                         <tr>
-                            <td class="text-white p-2">{container.name}</td>
+                            <td class="p-2">{container.name}</td>
                             {#each commitData[`${container.name}-${selectedBranches[container.name]}`] || [] as commitInfo}
-                                <td class="text-white p-2">{commitInfo?.lastPipelineRef || 'N/A'}</td>
+                                <td class="p-2">{commitInfo?.lastPipelineRef || 'N/A'}</td>
                             {/each}
                         </tr>
                     {/if}
                 {/each}
             </table>
         </div>
+        <button on:click={exportToExcel} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 mt-4 rounded">
+            Export to Excel (xlsx)
+        </button>
+        <button on:click={exportToJSON} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 mt-4 rounded">
+            Export raw data with commits to JSON
+        </button>
+        <button on:click={exportToCSV} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 mt-4 rounded">
+            Export to CSV
+        </button>
+
+        
     {/if}
+
 </div>
