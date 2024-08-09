@@ -187,10 +187,13 @@
         <a href="/projects" class="underline hover:bg-[rgba(0,0,0,0.2)]">Back to project list...</a>
     </div>
     <h1 class="text-2xl font-bold my-4">Retrieving submodule tags from gitlab project using API</h1>
-    <h2 class="mb-6">This project retrieves submodule tags from a Wabtec Gitlab project using the Gitlab API. The process of the code can be find 
-        <a href="/project5" class="underline hover:bg-[rgba(0,0,0,0.2)]">here.</a> 
-        If you want to proceed with branch auto-selection version, please visit this 
+    <h2 class="mb-6">This project retrieves submodule tags from a Wabtec Gitlab project using the Gitlab API. 
+        The specific branch for each container should be <span class="font-bold text-blue-500">manually</span> selected in order to retrieve their submodule tags.
+        <br>If you want to proceed with <span class="font-bold text-blue-500">auto-selection version</span>, please visit this 
         <a href="/project4" class="underline hover:bg-[rgba(0,0,0,0.2)]">page.</a>
+        The process of the code can be find 
+        <a href="/project5" class="underline hover:bg-[rgba(0,0,0,0.2)]">here.</a> 
+        
     </h2>
     <p class="text-2xl text-center font-bold mb-8"> Try the code </p>
     <input type="password" bind:value={personalAccessToken} placeholder="Enter your personal access token" class="bg-[rgba(0,0,0,0.35)] w-1/6 rounded-lg p-2 mb-4" />
@@ -252,7 +255,7 @@
             Export to Excel (xlsx)
         </button>
         <button on:click={exportToJSON} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 mt-4 rounded">
-            Export raw data with commits to JSON
+            Export raw data with commitSHA and tags to JSON
         </button>
         <button on:click={exportToCSV} class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 mt-4 rounded">
             Export to CSV
