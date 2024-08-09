@@ -46,7 +46,7 @@
         <li>Fixing problems:</li>
         <ul class="list-disc pl-6 space-y-2">
           <li>In Excel select requirement and the wrong words will appear -> change the wrong word right now -> press Reanalyze Selected -> pop up window will appear -> check Don't show this message again -> press Yes</li>
-          <li>Pros: Inside the requirement can see Recommendation, Incorrect Example, and Correct Example. Therefore, it will be easier to undestand the issue.</li>
+          <li>Pros: Inside the requirement can see Recommendation, Incorrect Example, and Correct Example. Therefore, it will be easier to understand the issue.</li>
         </ul>
         <li>Time spend (Total: ~16 minutes):</li>
         <ul class="list-disc pl-6 space-y-2">
