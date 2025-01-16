@@ -5,7 +5,7 @@
           <div class="text-center p-10">
             <div class="avatar flex justify-center m-auto">
               <div class="w-24 rounded-full">
-                <img src="/assets/pic.png" alt="pic">
+                <img src="/wabtec/assets/pic.png" alt="pic">
               </div>
             </div>
   
@@ -13,13 +13,13 @@
             <p class="text-gray-100 mt-2">Project Engineer</p>
             <div class="flex justify-center items-center mt-5">
               <a href="mailto:shakarim.sanjar@gmail.com" class="mr-4">
-                <img src="/assets/gmail.png" alt="Gmail" class="w-8 h-8">
+                <img src="/wabtec/assets/gmail.png" alt="Gmail" class="w-8 h-8">
               </a>
               <a href="https://www.linkedin.com/in/sanzhar-shakarim-248497205/" class="mr-4">
-                <img src="/assets/linkedin.png" alt="LinkedIn" class="w-8 h-8">
+                <img src="/wabtec/assets/linkedin.png" alt="LinkedIn" class="w-8 h-8">
               </a>
               <a href="https://t.me/Sanchozver">
-                <img src="/assets/telegram.png" alt="Telegram" class="w-8 h-8">
+                <img src="/wabtec/assets/telegram.png" alt="Telegram" class="w-8 h-8">
               </a>
             </div>
           </div>
