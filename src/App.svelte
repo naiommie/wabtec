@@ -46,9 +46,9 @@
 
   <main>
     
-      <Route path="/" component={Home} />
+      <Route path="/wabtec" component={Home} />
       <Route path="/cv" component={CV} />
-      <Route path="/projects" component={Projects} />
+      <Route path="/wabtec/projects" component={Projects} />
       <Route path="/project1" component={Project1} />
       <Route path="/project2" component={Project2} />
       <Route path="/project2a" component={Project2a} />
