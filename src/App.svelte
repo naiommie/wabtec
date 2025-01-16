@@ -27,7 +27,7 @@
   <header>
     <nav>
       <ul>
-        <a href="/" class="bg-[rgba(0,0,0,0.35)] m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+        <a href="/wabtec" class="bg-[rgba(0,0,0,0.35)] m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
           Sanzhar Shakarim
         </a>
         
@@ -80,7 +80,7 @@
     </div>
     <div>
       <div class="flex flex-col space-y-2 justify-end">
-        <a href="/" class="hover:underline">Home</a>
+        <a href="/wabtec" class="hover:underline">Home</a>
         <a href="/projects" class="hover:underline">Projects</a>
         <a href="/cv" class="hover:underline">CV</a>
       </div>
