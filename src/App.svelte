@@ -31,11 +31,11 @@
           Sanzhar Shakarim
         </a>
         
-        <a href="/cv" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+        <a href="/wabtec/cv" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
           CV
         </a>
 
-        <a href="/projects" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
+        <a href="/wabtec/projects" class="bg-[rgba(0,0,0,0.35)] float-right m-3.5 text-gray-100 inline-block px-4 py-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)] active:bg-[rgba(0,0,0,0.7)] transition-colors duration-200">
           Projects
         </a>
         
@@ -47,25 +47,25 @@
   <main>
     
       <Route path="/wabtec" component={Home} />
-      <Route path="/cv" component={CV} />
+      <Route path="/wabtec/cv" component={CV} />
       <Route path="/wabtec/projects" component={Projects} />
-      <Route path="/project1" component={Project1} />
-      <Route path="/project2" component={Project2} />
-      <Route path="/project2a" component={Project2a} />
-      <Route path="/project2b" component={Project2b} />
-      <Route path="/project2c" component={Project2c} />
-      <Route path="/project2d" component={Project2d} />
-      <Route path="/project2e" component={Project2e} />
-      <Route path="/project2j" component={Project2j} />
-      <Route path="/project3" component={Project3} />
-      <Route path="/project4" component={Project4} />
-      <Route path="/project5" component={Project5} />
-      <Route path="/project6" component={Project6} />
-      <Route path="/project6a" component={Project6a} />
-      <Route path="/project6a_coverage_master" component={Project6a_master} />
-      <Route path="/project6a_coverage_develop" component={Project6a_develop} />
-      <Route path="/project6a_coverage_latest" component={Project6a_rhi} />
-      <Route path="/project7" component={Project7} />
+      <Route path="/wabtec/project1" component={Project1} />
+      <Route path="/wabtec/project2" component={Project2} />
+      <Route path="/wabtec/project2a" component={Project2a} />
+      <Route path="/wabtec/project2b" component={Project2b} />
+      <Route path="/wabtec/project2c" component={Project2c} />
+      <Route path="/wabtec/project2d" component={Project2d} />
+      <Route path="/wabtec/project2e" component={Project2e} />
+      <Route path="/wabtec/project2j" component={Project2j} />
+      <Route path="/wabtec/project3" component={Project3} />
+      <Route path="/wabtec/project4" component={Project4} />
+      <Route path="/wabtec/project5" component={Project5} />
+      <Route path="/wabtec/project6" component={Project6} />
+      <Route path="/wabtec/project6a" component={Project6a} />
+      <Route path="/wabtec/project6a_coverage_master" component={Project6a_master} />
+      <Route path="/wabtec/project6a_coverage_develop" component={Project6a_develop} />
+      <Route path="/wabtec/project6a_coverage_latest" component={Project6a_rhi} />
+      <Route path="/wabtec/project7" component={Project7} />
     
   </main>
 
@@ -81,8 +81,8 @@
     <div>
       <div class="flex flex-col space-y-2 justify-end">
         <a href="/wabtec" class="hover:underline">Home</a>
-        <a href="/projects" class="hover:underline">Projects</a>
-        <a href="/cv" class="hover:underline">CV</a>
+        <a href="/wabtec/projects" class="hover:underline">Projects</a>
+        <a href="/wabtec/cv" class="hover:underline">CV</a>
       </div>
     </div>
   </footer>
