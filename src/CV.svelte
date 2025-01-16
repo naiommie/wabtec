@@ -22,7 +22,7 @@
             <td class="px-2 text-xs">
               <p class="font-bold">Carnegie Mellon University</p>
               Master of Engineering and Technology Innovation Management<br>
-              GPA: 3.67/4.00
+              GPA: 3.69/4.00
             </td>
             <td class="px-2 text-xs">Pittsburgh, PA <br>
               12/2024<br></td>

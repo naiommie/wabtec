@@ -172,16 +172,16 @@
               </svg>
             </div>
             <div class="timeline-end mb-10">
-              <time class="font-mono italic ml-1 text-gray-100">2024.08 - Erie, PA</time>
+              <time class="font-mono italic ml-1 text-gray-100">2024.10 - Erie, PA</time>
               <div class="bg-[rgba(0,0,0,0.35)] p-4 rounded-md">
                 <div class="text-lg font-black text-gray-100">Wabtec Corporation</div>
                 <p class="text-gray-100">Software Engineering Summer Intern</p>
               </div>
             </div>
-            <hr class="bg" />
+            <hr class="bg-primary" />
           </li>
           <li>
-            <hr class="bg" />
+            <hr class="bg-primary" />
             <div class="timeline-middle">
               <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +201,7 @@
                 <p class="text-gray-100">MSc in Engineering Technology Innovation Management</p>
               </div>
             </div>
-            <hr class="bg" />
+            <hr class="bg-primary" />
           </li>
         </ul>
       </div>
